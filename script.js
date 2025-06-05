@@ -1,37 +1,62 @@
 function showSection(sectionId) {
   const sections = document.querySelectorAll("main > section");
   sections.forEach(section => {
-    if (section.id === sectionId) {
-      section.classList.remove("hidden");
-    } else if (section.id !== "") {
-      section.classList.add("hidden");
-    }
+    section.classList.toggle("hidden", section.id !== sectionId);
   });
 }
 
-function openModal(title, description, imageSrc) {
-  const modal = document.getElementById("projectModal");
-  document.getElementById("modalTitle").innerText = title;
-  document.getElementById("modalDescription").innerText = description;
-  const modalImg = document.getElementById("modalImage");
-  if (imageSrc) {
-    modalImg.src = imageSrc;
-    modalImg.classList.remove("hidden");
+function openDetailView({ title, description, image, video, tech }) {
+  document.body.classList.add("overflow-hidden"); // ❗ Prevent background scrolling
+
+  document.getElementById("detailTitle").innerText = title;
+  document.getElementById("detailDescription").innerText = description;
+
+  const img = document.getElementById("detailImage");
+  const vid = document.getElementById("detailVideo");
+
+  if (image) {
+    img.src = image;
+    img.classList.remove("hidden");
   } else {
-    modalImg.classList.add("hidden");
+    img.classList.add("hidden");
   }
-  modal.classList.remove("hidden");
+
+  if (video) {
+    vid.src = video;
+    vid.classList.remove("hidden");
+  } else {
+    vid.classList.add("hidden");
+  }
+
+  const techContainer = document.getElementById("detailTech");
+  techContainer.innerHTML = "";
+  if (tech && tech.length) {
+    tech.forEach(t => {
+      const span = document.createElement("span");
+      span.className = "bg-teal-600 px-2 py-1 rounded-full";
+      span.innerText = t;
+      techContainer.appendChild(span);
+    });
+  }
+
+  document.getElementById("detailOverlay").classList.remove("hidden");
 }
 
-function closeModal() {
-  document.getElementById("projectModal").classList.add("hidden");
+function closeDetailView() {
+  document.body.classList.remove("overflow-hidden"); // ❗ Restore background scroll
+  document.getElementById("detailOverlay").classList.add("hidden");
 }
 
-// Optional: Close modal when clicking outside content
-window.addEventListener("click", function (e) {
-  const modal = document.getElementById("projectModal");
-  const content = document.getElementById("modalContent");
-  if (!modal.classList.contains("hidden") && !content.contains(e.target)) {
-    closeModal();
+function handleOverlayClick(event) {
+  // Click outside modal content
+  closeDetailView();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const overlay = document.getElementById("detailOverlay");
+    if (!overlay.classList.contains("hidden")) {
+      closeDetailView();
+    }
   }
 });

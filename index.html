@@ -18,38 +18,49 @@
           fontFamily: {
             title: ['Orbitron', 'sans-serif'],
             body: ['Inter', 'sans-serif'],
+          },
+          backdropBlur: {
+            xs: '2px',
           }
         }
       }
     }
   </script>
 
-  <!-- Smooth Scroll & Fade Animation -->
+  <!-- Custom CSS -->
   <style>
     html {
       scroll-behavior: smooth;
     }
-    .fade-in {
-      animation: fadeIn 0.5s ease-in-out forwards;
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .animate-fade-in {
+      animation: fade-in 0.3s ease-out;
+    }
+
+    /* ✅ Hide scrollbar in modal */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* ✅ Prevent body scroll when modal is open */
+    body.modal-open {
+      overflow: hidden;
     }
   </style>
 </head>
 
-
-<body class="bg-gray-900 text-white font-body min-h-screen flex flex-col">
-
-  <!-- Header / Navigation -->
-  <header class="bg-gray-800 shadow sticky top-0 z-50">
+<body class="bg-gray-900 text-white font-body min-h-screen flex flex-col relative">
+  <!-- Header -->
+  <header class="bg-gray-800 shadow sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
       <h1 class="text-2xl font-title font-bold mb-2 sm:mb-0">David Sousa</h1>
       <nav class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm sm:text-base">
@@ -63,10 +74,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-grow relative">
-
-    <!-- Decorative Background Blob -->
-    <div class="absolute top-10 left-10 w-72 h-72 bg-teal-800 opacity-10 rounded-full blur-3xl pointer-events-none z-0"></div>
+  <main class="flex-grow relative z-10">
 
     <!-- Hero Section -->
     <section class="text-center px-6 py-24 sm:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 relative z-10">
@@ -78,64 +86,58 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 bg-gray-900 fade-in px-4">
+    <section id="portfolio" class="py-16 px-4 bg-gray-900 fade-in">
       <div class="max-w-6xl mx-auto">
         <h3 class="text-2xl sm:text-3xl font-bold mb-10 text-center">Portfolio</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
-            <img class="w-full h-48 object-cover" src="Images/BodyAuras.png" alt="Project Image" />
+          <!-- Card 1 -->
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
+               onclick="openDetailView({
+                 title: 'Body Auras',
+                 description: 'A magical aura system built in Roblox Studio with dynamic VFX and player upgrades.',
+                 image: 'Images/BodyAuras.png',
+                 video: '',
+                 tech: ['Roblox', 'Lua', 'Particles']
+               })">
+            <img class="w-full h-48 object-contain object-center bg-gray-700" src="Images/BodyAuras.png" alt="Body Auras" />
             <div class="p-4">
               <h4 class="text-xl font-semibold mb-2">Body Auras</h4>
               <p class="text-gray-400 text-sm">Roblox Studio</p>
             </div>
           </div>
-          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transform transition duration-300">
-            <img class="w-full h-48 object-contain" src="Images/InTempoLogo.png" alt="Project Image" />
+          <!-- Card 2 -->
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
+               onclick="openDetailView({
+                 title: 'InTempo',
+                 description: 'A rhythm-based game made in Unity with beat-matching mechanics and custom FX. This was a University project where the class was tasked to create a game from scratch. It was the first ever game I personally started and finished to completion alongside 4 other classmates. I was mainly in charge of scripting and VFX for this project, along with also make a simple trailer displayed above.',
+                 image: 'Images/InTempoLogo.png',
+                 video: 'Images/InTempoTrailer.mov',
+                 tech: ['Unity', 'C#', 'Audio Sync']
+               })">
+            <img class="w-full h-48 object-contain object-center bg-gray-700" src="Images/InTempoLogo.png" alt="InTempo" />
             <div class="p-4">
               <h4 class="text-xl font-semibold mb-2">InTempo</h4>
               <p class="text-gray-400 text-sm">Unity Engine</p>
             </div>
           </div>
-          <!-- Add more project cards here if needed -->
         </div>
       </div>
     </section>
 
-    <!-- Game Jams Section -->
-    <section id="gamejams" class="py-16 bg-gray-900 hidden px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-10">Game Jams</h3>
-        <p class="text-gray-300">Content about game jams goes here.</p>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-16 bg-gray-900 hidden px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-10">Experience</h3>
-        <p class="text-gray-300">Details about your experience go here.</p>
-      </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="aboutme" class="py-16 bg-gray-900 hidden px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-10">About Me</h3>
-        <p class="text-gray-300">Information about you.</p>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-900 hidden px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-10">Contact</h3>
-        <p class="text-gray-300 mb-2">email: davidsousa5jv@gmail.com</p>
+    <!-- Other Sections (Game Jams, Experience, etc.) -->
+    <section id="gamejams" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">Game Jams content...</div></section>
+    <section id="experience" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">Experience content...</div></section>
+    <section id="aboutme" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">About Me content...</div></section>
+    <section id="contact" class="py-16 px-4 bg-gray-900 hidden">
+      <div class="text-center text-gray-300">
+        <p class="mb-2">email: davidsousa5jv@gmail.com</p>
+        <p>phone: +351 916 516 951</p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 py-6 text-center text-gray-400 text-sm px-4">
+  <footer class="bg-gray-800 py-6 text-center text-gray-400 text-sm px-4 z-10 relative">
     <p>&copy; 2025 David Sousa | Game Developer.</p>
     <div class="flex flex-wrap justify-center gap-4 mt-4 text-sm">
       <a href="https://linkedin.com/in/YOUR_USERNAME" class="hover:text-white">LinkedIn</a>
@@ -143,5 +145,80 @@
     </div>
   </footer>
 
+  <div id="detailOverlay"
+       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden overflow-hidden"
+       onclick="handleOverlayClick(event)">
+    <div class="bg-gray-900 text-white max-w-3xl w-full rounded-xl p-6 mx-4 relative animate-fade-in overflow-y-auto scrollbar-hide max-h-[90vh] shadow-xl"
+         onclick="event.stopPropagation()">
+      <button onclick="closeDetailView()" class="absolute top-3 right-4 text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
+      <h2 id="detailTitle" class="text-2xl font-bold mb-4"></h2>
+      <img id="detailImage" src="" alt="" class="w-full h-64 object-contain object-center rounded mb-4 hidden bg-gray-800" />
+      <video id="detailVideo" controls class="w-full mb-4 rounded hidden"></video>
+      <p id="detailDescription" class="text-gray-300 mb-4"></p>
+      <div id="detailTech" class="flex flex-wrap gap-2 text-sm"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Add escape key listener -->
+  <script>
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeDetailView();
+      }
+    });
+
+    function handleOverlayClick(event) {
+      if (event.target.id === 'detailOverlay') {
+        closeDetailView();
+      }
+    }
+
+    function openDetailView({ title, description, image, video, tech }) {
+      document.getElementById('detailTitle').textContent = title;
+      document.getElementById('detailDescription').textContent = description;
+
+      const imgEl = document.getElementById('detailImage');
+      const vidEl = document.getElementById('detailVideo');
+
+      if (image) {
+        imgEl.src = image;
+        imgEl.classList.remove('hidden');
+      } else {
+        imgEl.classList.add('hidden');
+      }
+
+      if (video) {
+        vidEl.src = video;
+        vidEl.classList.remove('hidden');
+      } else {
+        vidEl.classList.add('hidden');
+      }
+
+      const techContainer = document.getElementById('detailTech');
+      techContainer.innerHTML = '';
+      if (tech && tech.length) {
+        tech.forEach(t => {
+          const span = document.createElement('span');
+          span.className = 'bg-teal-700 px-2 py-1 rounded';
+          span.textContent = t;
+          techContainer.appendChild(span);
+        });
+      }
+
+      document.getElementById('detailOverlay').classList.remove('hidden');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeDetailView() {
+      const overlay = document.getElementById('detailOverlay');
+      overlay.classList.add('hidden');
+      document.body.classList.remove('modal-open');
+
+      // Optional: pause/reset video
+      const video = document.getElementById('detailVideo');
+      video.pause();
+      video.currentTime = 0;
+    }
+  </script>
 </body>
 </html>
