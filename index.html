@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>David Sousa Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="script.js" defer></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter&display=swap" rel="stylesheet">
-
-  <!-- Tailwind Custom Config -->
   <script>
     tailwind.config = {
       theme: {
@@ -26,8 +20,8 @@
       }
     }
   </script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter&display=swap" rel="stylesheet">
 
-  <!-- Custom CSS -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -42,16 +36,9 @@
       animation: fade-in 0.3s ease-out;
     }
 
-    /* ✅ Hide scrollbar in modal */
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hide {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* ✅ Prevent body scroll when modal is open */
     body.modal-open {
       overflow: hidden;
     }
@@ -64,33 +51,33 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
       <h1 class="text-2xl font-title font-bold mb-2 sm:mb-0">David Sousa</h1>
       <nav class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm sm:text-base">
-        <button onclick="showSection('portfolio')" class="hover:text-teal-400 transition">Portfolio</button>
-        <button onclick="showSection('gamejams')" class="hover:text-teal-400 transition">Game Jams</button>
-        <button onclick="showSection('experience')" class="hover:text-teal-400 transition">Experience</button>
-        <button onclick="showSection('aboutme')" class="hover:text-teal-400 transition">About Me</button>
-        <button onclick="showSection('contact')" class="hover:text-teal-400 transition">Contacts</button>
+        <a href="#aboutme" class="hover:text-teal-400 transition">About Me</a>
+        <a href="#contact" class="hover:text-teal-400 transition">Contacts</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Hero -->
+  <section class="text-center px-6 py-20 sm:py-28 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-700 relative z-10">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-title font-extrabold mb-6">Game Developer | VFX Artist</h2>
+    <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+      Press the buttons below
+    </p>
+    <div class="flex justify-center gap-4 flex-wrap">
+      <button onclick="showSection('portfolio')" class="bg-teal-500 text-white px-5 py-2 rounded-full hover:bg-teal-400 transition">Portfolio</button>
+      <button onclick="showSection('gamejams')" class="bg-teal-500 text-white px-5 py-2 rounded-full hover:bg-teal-400 transition">Game Jams</button>
+      <button onclick="showSection('experience')" class="bg-teal-500 text-white px-5 py-2 rounded-full hover:bg-teal-400 transition">Experience</button>
+    </div>
+  </section>
+
+  <!-- Sections -->
   <main class="flex-grow relative z-10">
-
-    <!-- Hero Section -->
-    <section class="text-center px-6 py-24 sm:py-32 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 relative z-10">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-title font-extrabold mb-6">Game Developer | VFX Artist</h2>
-      <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-        Experience in Roblox Studio, Unity, Godot, Unreal Engine
-      </p>
-      <a href="#portfolio" onclick="showSection('portfolio')" class="inline-block bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-400 transition">View My Work</a>
-    </section>
-
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 px-4 bg-gray-900 fade-in">
+    <section id="portfolio" class="py-16 px-4 bg-gray-900 animate-fade-in">
       <div class="max-w-6xl mx-auto">
-        <h3 class="text-2xl sm:text-3xl font-bold mb-10 text-center">Portfolio</h3>
+        <h3 class="text-2xl sm:text-3xl font-title mb-10 text-center">Portfolio</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Card 1 -->
+          <!-- Body Auras Card -->
           <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
                onclick="openDetailView({
                  title: 'Body Auras',
@@ -99,22 +86,22 @@
                  video: '',
                  tech: ['Roblox', 'Lua', 'Particles']
                })">
-            <img class="w-full h-48 object-contain object-center bg-gray-700" src="Images/BodyAuras.png" alt="Body Auras" />
+            <img class="w-full h-48 object-contain bg-gray-700" src="Images/BodyAuras.png" alt="Body Auras" />
             <div class="p-4">
               <h4 class="text-xl font-semibold mb-2">Body Auras</h4>
               <p class="text-gray-400 text-sm">Roblox Studio</p>
             </div>
           </div>
-          <!-- Card 2 -->
+          <!-- InTempo Card -->
           <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
                onclick="openDetailView({
                  title: 'InTempo',
-                 description: 'A rhythm-based game made in Unity with beat-matching mechanics and custom FX. This was a University project where the class was tasked to create a game from scratch. It was the first ever game I personally started and finished to completion alongside 4 other classmates. I was mainly in charge of scripting and VFX for this project, along with also make a simple trailer displayed above.',
+                 description: 'A rhythm-based game made in Unity with beat-matching mechanics and custom FX.',
                  image: 'Images/InTempoLogo.png',
                  video: 'Images/InTempoTrailer.mov',
                  tech: ['Unity', 'C#', 'Audio Sync']
                })">
-            <img class="w-full h-48 object-contain object-center bg-gray-700" src="Images/InTempoLogo.png" alt="InTempo" />
+            <img class="w-full h-48 object-contain bg-gray-700" src="Images/InTempoLogo.png" alt="InTempo" />
             <div class="p-4">
               <h4 class="text-xl font-semibold mb-2">InTempo</h4>
               <p class="text-gray-400 text-sm">Unity Engine</p>
@@ -124,29 +111,92 @@
       </div>
     </section>
 
-    <!-- Other Sections (Game Jams, Experience, etc.) -->
-    <section id="gamejams" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">Game Jams content...</div></section>
-    <section id="experience" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">Experience content...</div></section>
-    <section id="aboutme" class="py-16 px-4 bg-gray-900 hidden"><div class="text-center text-gray-300">About Me content...</div></section>
-    <section id="contact" class="py-16 px-4 bg-gray-900 hidden">
-      <div class="text-center text-gray-300">
-        <p class="mb-2">email: davidsousa5jv@gmail.com</p>
-        <p>phone: +351 916 516 951</p>
+    <!-- Game Jams -->
+    <section id="gamejams" class="py-16 px-4 bg-gray-900 hidden">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-2xl sm:text-3xl font-title mb-10 text-center">Game Jams</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer"
+               onclick="openDetailView({
+                 title: 'BubbleTrouble',
+                 description: 'BubbleTrouble was a weekend game jam project created in GODOT. It\'s a fast-paced 2D shooter beat-em-up using chewing gum-based weapons.',
+                 image: 'Images/BubbleTrouble.png',
+                 video: '',
+                 tech: ['GODOT', 'Game Jam', 'Pixel Art', 'BubbleTheme']
+               })">
+            <img class="w-full h-48 object-contain bg-gray-700" src="Images/BubbleTrouble.png" alt="BubbleTrouble" />
+            <div class="p-4">
+              <h4 class="text-xl font-semibold mb-2">BubbleTrouble</h4>
+              <p class="text-gray-400 text-sm">Godot Engine</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-16 px-6 bg-gray-900 hidden">
+      <h2 class="text-3xl font-title font-bold text-center mb-12">Experience</h2>
+      <div class="border-l-4 border-teal-500 pl-6">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold">Student at Lusofona Porto</h3>
+          <span class="text-gray-400 text-sm">📅2023 - Present</span>
+          <p class="mt-2 text-gray-300">Bachelores in Videogames and Multimedia Applications.</p>
+        </div>
+      </div>
+      <div class="border-l-4 border-teal-500 pl-6">
+        <div class="mb-10">
+          <h3 class="text-xl font-semibold">Roblox Freelance VFX Artist</h3>
+          <span class="text-gray-400 text-sm">📅2020 - Present</span>
+          <p class="mt-2 text-gray-300">Creaated various different types of VFX for roblox games.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me -->
+<section id="aboutme" class="py-16 px-6 bg-gray-700">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8">
+    <!-- Profile Image -->
+    <div class="flex-shrink-0">
+      <img src="Images/Eu.jpg" alt="David Sousa" class="w-48 h-48 rounded-full object-cover border-4 border-teal-500" />
+    </div>
+
+    <!-- Text Content -->
+    <div>
+      <h2 class="text-3xl font-title font-bold mb-6">About Me</h2>
+      <p class="text-gray-300 mb-4">
+        Hey there! I’m David and I’m a <strong>Game Developer</strong> and <strong>VFX Artist</strong> with a passion for building immersive digital experiences.
+      </p>
+      <p class="text-gray-300 mb-4">
+        Over the past few years, I’ve worked with engines like <strong>Roblox Studio</strong>, <strong>Unity</strong>, <strong>Godot</strong>, and <strong>Unreal Engine</strong>, creating games, tools, and visual effects. I love mixing technical know-how with creativity to deliver polished, engaging content.
+      </p>
+      <p class="text-gray-300 mb-4">
+        Whether it's participating in Game Jams or collaborating with a team, I thrive on challenges that push me to learn and grow. I’m always exploring new techniques, from shaders and procedural systems to VFX and game design workflows.
+      </p>
+      <p class="text-gray-300">
+        Currently open to freelance work and exciting projects. Let’s connect!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-16 px-6 bg-gray-850">
+      <h2 class="text-3xl font-title font-bold text-center mb-8">Get in Touch</h2>
+      <div class="text-center">
+        <p class="mb-2">Email: <a href="mailto:davidsousa5jv@gmail.com" class="text-teal-400 hover:underline">davidsousa5jv@gmail.com</a></p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="bg-gray-800 py-6 text-center text-gray-400 text-sm px-4 z-10 relative">
-    <p>&copy; 2025 David Sousa | Game Developer.</p>
-    <div class="flex flex-wrap justify-center gap-4 mt-4 text-sm">
-      <a href="https://linkedin.com/in/YOUR_USERNAME" class="hover:text-white">LinkedIn</a>
-      <a href="https://github.com/YOUR_USERNAME" class="hover:text-white">GitHub</a>
-    </div>
+    <p>&copy; 2025 David Sousa | Game Developer</p>
   </footer>
 
-  <div id="detailOverlay"
-       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden overflow-hidden"
+  <!-- Project Detail Modal -->
+  <div id="detailOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden overflow-hidden"
        onclick="handleOverlayClick(event)">
     <div class="bg-gray-900 text-white max-w-3xl w-full rounded-xl p-6 mx-4 relative animate-fade-in overflow-y-auto scrollbar-hide max-h-[90vh] shadow-xl"
          onclick="event.stopPropagation()">
@@ -159,49 +209,33 @@
     </div>
   </div>
 
-  <!-- ✅ Add escape key listener -->
   <script>
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        closeDetailView();
-      }
+      if (event.key === 'Escape') closeDetailView();
     });
 
     function handleOverlayClick(event) {
-      if (event.target.id === 'detailOverlay') {
-        closeDetailView();
-      }
+      if (event.target.id === 'detailOverlay') closeDetailView();
     }
 
     function openDetailView({ title, description, image, video, tech }) {
       document.getElementById('detailTitle').textContent = title;
       document.getElementById('detailDescription').textContent = description;
 
-      const imgEl = document.getElementById('detailImage');
-      const vidEl = document.getElementById('detailVideo');
+      const img = document.getElementById('detailImage');
+      const vid = document.getElementById('detailVideo');
 
-      if (image) {
-        imgEl.src = image;
-        imgEl.classList.remove('hidden');
-      } else {
-        imgEl.classList.add('hidden');
-      }
+      if (image) { img.src = image; img.classList.remove('hidden'); } else { img.classList.add('hidden'); }
+      if (video) { vid.src = video; vid.classList.remove('hidden'); } else { vid.classList.add('hidden'); }
 
-      if (video) {
-        vidEl.src = video;
-        vidEl.classList.remove('hidden');
-      } else {
-        vidEl.classList.add('hidden');
-      }
-
-      const techContainer = document.getElementById('detailTech');
-      techContainer.innerHTML = '';
+      const techEl = document.getElementById('detailTech');
+      techEl.innerHTML = '';
       if (tech && tech.length) {
         tech.forEach(t => {
           const span = document.createElement('span');
           span.className = 'bg-teal-700 px-2 py-1 rounded';
           span.textContent = t;
-          techContainer.appendChild(span);
+          techEl.appendChild(span);
         });
       }
 
@@ -210,14 +244,18 @@
     }
 
     function closeDetailView() {
-      const overlay = document.getElementById('detailOverlay');
-      overlay.classList.add('hidden');
+      document.getElementById('detailOverlay').classList.add('hidden');
       document.body.classList.remove('modal-open');
-
-      // Optional: pause/reset video
       const video = document.getElementById('detailVideo');
       video.pause();
       video.currentTime = 0;
+    }
+
+    function showSection(sectionId) {
+      ['portfolio', 'gamejams', 'experience'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', id !== sectionId);
+      });
     }
   </script>
 </body>
