@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David | Technical Artist Portfolio</title>
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="description"
+        content="Technical Artist Portfolio showcasing shaders, tools, and pipeine optimization." />
+</head>
+
+<body class="selection:bg-primary selection:text-void">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-sm border-b border-white/5 bg-void/80"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-sans font-bold text-2xl tracking-tighter text-white">
+                David<span class="text-primary"> Sousa</span>
+            </a>
+            <div class="hidden md:flex gap-8">
+                <a href="#portfolio"
+                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Portfolio</a>
+                <a href="#skills"
+                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Skills</a>
+                <a href="#gamejams"
+                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Jams</a>
+                <a href="#experience"
+                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Experience</a>
+                <a href="#about"
+                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">About</a>
+            </div>
+            <a href="#contact"
+                class="hidden md:block px-6 py-2 border border-white/20 hover:border-primary hover:text-primary transition-all rounded-full text-sm font-semibold uppercase tracking-wide">
+                Get in Touch
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Decor Background -->
+        <div class="absolute inset-0 z-0 overflow-hidden bg-void">
+            <!-- Existing ambient glow checks -->
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none">
+            </div>
+            <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px] animate-blob mix-blend-screen pointer-events-none"
+                style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none"
+                style="animation-delay: 4s;"></div>
+            <div
+                class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="font-bold font-sans mb-8 leading-tight">
+                <span class="text-6xl md:text-9xl block mb-2">David Sousa</span>
+                <span class="text-3xl md:text-5xl">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Junior</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">VFX
+                        Artist</span>
+                </span>
+            </h1>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <a href="#portfolio"
+                    class="group relative px-8 py-4 bg-white text-void font-bold rounded-full overflow-hidden">
+                    <div
+                        class="absolute inset-0 w-full h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out">
+                    </div>
+                    <span class="relative group-hover:text-void transition-colors">View Portfolio</span>
+                </a>
+                <a href="#contact"
+                    class="px-8 py-4 bg-transparent border border-white/20 rounded-full hover:bg-white/5 transition-colors font-semibold">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-32 bg-surface relative border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-16 text-center">Portfolio</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12" id="projects-container">
+                <!-- Projects will be injected here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 bg-void relative border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-8">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-4">Skills & Expertise</h2>
+                    <p class="text-gray-400 max-w-md">My best areas and where I shine.</p>
+                </div>
+                <!-- Decorative bits -->
+                <div class="flex gap-2 text-primary font-mono text-sm mt-6 md:mt-0">
+                    <span>// COLOR THEORY</span>
+                    <span>// VISUAL EFFECTS</span>
+                    <span>// VISUAL AMBIENCE</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-primary/50 transition-colors group">
+                    <div
+                        class="h-12 w-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path transform="rotate(12 12 12)" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M4 4H20V20H4V4ZM8.5 8.5H15.5V15.5H8.5V8.5Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-sans">ROBLOX</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Proficient in Roblox Studio and its
+                        capabilities around
+                        VFX and building.</p>
+                    <ul class="text-sm font-mono text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Particles/Beams/Trails
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Basic Rig (R6 & R15) Animation
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Basic Building
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-panel p-8 rounded-2xl hover:border-secondary/50 transition-colors group">
+                    <div
+                        class="h-12 w-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 12s2-4 4-4 4 4 4 4"></path>
+                            <path d="M8 12s2 4 4 4 4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 font-sans">Shaders & VFX</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Creating visual effects to compliment game
+                        actions.</p>
+                    <ul class="text-sm font-mono text-gray-500 space-y-2">
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>ROBLOX
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>Blender
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>After Effects
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+
+    <!-- Game Jams Section -->
+    <section id="gamejams" class="py-32 bg-surface relative border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-white/10 pb-8">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-4">Game Jams</h2>
+                    <p class="text-gray-400 max-w-md">Rapid prototyping and creative chaos.</p>
+                </div>
+                <div class="flex gap-2 text-primary font-mono text-sm mt-6 md:mt-0">
+                    <span>// GLOBAL GAME JAM</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="jams-container">
+                <!-- Data injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-32 bg-void relative border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-16 text-center">Experience</h2>
+
+            <div class="max-w-4xl mx-auto space-y-12">
+                <!-- Experience Item 1 -->
+                <div class="relative pl-8 border-l-2 border-primary/30 group">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-primary rounded-full group-hover:bg-primary transition-colors">
+                    </div>
+                    <div
+                        class="bg-surface/30 p-8 rounded-2xl border border-white/5 hover:border-primary/20 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Universidade Lusófona</h3>
+                                <p class="text-primary font-mono text-sm tracking-widest uppercase">Bachelor in
+                                    Videogames and Multimedia Applications
+                            </div>
+                            <span class="text-gray-500 font-mono text-sm">2023 — Present</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            A description of your studies, key modules, or graduation project. This is where you can
+                            talk about what you learned and achieved during this time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative pl-8 border-l-2 border-secondary/30 group">
+                    <div
+                        class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-secondary rounded-full group-hover:bg-secondary transition-colors">
+                    </div>
+                    <div
+                        class="bg-surface/30 p-8 rounded-2xl border border-white/5 hover:border-secondary/20 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">Freelance Roblox VFX Artist</h3>
+                                <p class="text-secondary font-mono text-sm tracking-widest uppercase">Freelance</p>
+                            </div>
+                            <span class="text-gray-500 font-mono text-sm">2022 — Present</span>
+                        </div>
+                        <p class="text-gray-400 leading-relaxed">
+                            Creating visual effects for Roblox games. Started as a hobby and evolved into a passion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-surface relative overflow-hidden border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+                <!-- Image Container (Left) -->
+                <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full animate-pulse blur-2xl opacity-20">
+                    </div>
+                    <div
+                        class="relative w-full h-full rounded-full border-2 border-white/10 overflow-hidden glass-panel p-2 shadow-2xl">
+                        <img src="assets/Eu.jpg" alt="David Sousa"
+                            class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700 scale-105">
+                    </div>
+                </div>
+
+                <!-- Text Content (Right) -->
+                <div class="flex-1 text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-6">About Me</h2>
+                    <div class="prose prose-invert prose-lg max-w-2xl text-gray-400">
+                        <p class="leading-relaxed mb-4">
+                            Hello! I'm David, a VFX artist primarily with Roblox Studio, but I also have experienc with
+                            Unity and Godot.
+                        </p>
+                        <p class="leading-relaxed">
+                            My journey in game development is driven by a curiosity for how things work behind the
+                            scenes
+                            and a passion for creating immersive experiences and appealing visual storytelling. Whether
+                            it's in Roblox, Unity, or any other engine,
+                            I strive to deliver high-quality visuals that don't compromise on performance. I'm
+                            always eager to learn new technologies and take on challenging projects that push
+                            the
+                            boundaries of what's possible in real-time rendering.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+
+        <!-- Modal Content -->
+        <div class="absolute inset-0 overflow-y-auto">
+            <div class="min-h-full flex items-center justify-center p-4 md:p-8">
+                <div class="relative w-full max-w-4xl bg-surface border border-white/10 rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0"
+                    id="modal-content">
+
+                    <!-- Close Button -->
+                    <button id="modal-close"
+                        class="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-white text-white hover:text-black rounded-full transition-colors">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Modal Body -->
+                    <!-- Modal Body -->
+                    <div class="flex flex-col">
+                        <!-- Media Carousel -->
+                        <div class="relative w-full aspect-video bg-black overflow-hidden rounded-t-2xl"
+                            id="modal-image-container">
+                            <!-- Helper: Gradient background always there as fallback/base -->
+                            <div class="absolute inset-0 bg-surface-highlight"></div>
+
+                            <!-- Dynamic Content Container -->
+                            <div id="modal-visual"
+                                class="absolute inset-0 flex items-center justify-center transition-all duration-500">
+                                <!-- Content injected here -->
+                            </div>
+
+                            <!-- Carousel Controls -->
+                            <button id="carousel-prev"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button id="carousel-next"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </button>
+
+                            <!-- Slide Counter/Dots -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="carousel-dots">
+                                <!-- Dots injected here -->
+                            </div>
+                        </div>
+
+                        <!-- Info Section -->
+                        <div class="w-full p-8 md:p-10 bg-surface">
+                            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                                <div>
+                                    <span id="modal-tags"
+                                        class="text-primary font-mono text-xs uppercase tracking-wider mb-2 block"></span>
+                                    <h3 id="modal-title" class="text-3xl md:text-5xl font-bold text-white font-sans">
+                                    </h3>
+                                </div>
+                                <!-- Optional: External Links could go here -->
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+                                <div class="md:col-span-2 prose prose-invert prose-lg max-w-none text-gray-300">
+                                    <p id="modal-description" class="leading-relaxed"></p>
+                                </div>
+
+                                <div
+                                    class="md:col-span-1 border-t md:border-t-0 md:border-l border-white/10 pt-6 md:pt-0 md:pl-8">
+                                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wide">Key Features
+                                    </h4>
+                                    <ul id="modal-features" class="space-y-3 font-mono text-sm text-gray-400">
+                                        <!-- Features injected here -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About / Contact -->
+    <section id="contact" class="py-32 bg-void text-center relative overflow-hidden border-t border-white/5">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-void to-transparent opacity-50">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-8">Ready to Work?</h2>
+            <p class="text-xl text-gray-400 max-w-xl mx-auto mb-12">I am currently freelancing, but I am always open to
+                new opportunities in game
+                development. Feel free to reach out!</p>
+
+            <a href="mailto:davidsousa5vj@gmail.com"
+                class="inline-flex items-center gap-3 px-10 py-5 bg-primary text-void font-bold rounded-full hover:bg-white transition-colors text-lg">
+                <span>Say Hello</span>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+            <div class="mt-20 flex justify-center gap-8 opacity-50">
+                <a href="#" class="hover:text-primary transition-colors">ArtStation</a>
+                <a href="#" class="hover:text-primary transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-primary transition-colors">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
