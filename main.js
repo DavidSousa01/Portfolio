@@ -1,3 +1,5 @@
+import './style.css';
+
 // Project Data
 const projects = [
     {
