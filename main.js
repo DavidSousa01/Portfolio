@@ -318,7 +318,41 @@ function observeElements() {
     });
 }
 
+// Typewriter Effect
+const typewriterElement = document.getElementById('typewriter');
+const phrases = ["VFX Artist", "Technical Artist"];
+let phraseIndex = 0;
+let charIndex = phrases[0].length;
+let isDeleting = false;
+let typeSpeed = 100;
+
+function type() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+        charIndex--;
+        typeSpeed = 50;
+    } else {
+        charIndex++;
+        typeSpeed = 150;
+    }
+
+    typewriterElement.textContent = currentPhrase.substring(0, charIndex);
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500; // Pause before new word
+    }
+
+    setTimeout(type, typeSpeed);
+}
+
 // Initial Render
 renderProjects();
+type();
 
 console.log('Portfolio initialized');
