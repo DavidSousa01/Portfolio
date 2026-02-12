@@ -1,5 +1,9 @@
 import './style.css';
 
+// Tailwind Safelist (Ensures these classes are included in the bundle even if only used dynamically):
+// bg-primary bg-secondary bg-accent
+
+
 // Project Data
 const projects = [
     {
@@ -48,8 +52,8 @@ const projects = [
         title: "Nocturne Battlegrounds",
         tags: "Roblox",
         thumbnail: "assets/NocturneBattlegroundsLogo.png",
-        colorClass: "text-secondary",
-        bgClass: "bg-secondary/10",
+        colorClass: "text-accent",
+        bgClass: "bg-accent/10",
         shortDesc: "A Battlegrounds Free-for-all game where you play as vampires with different abilities.",
         longDesc: "Nocturne Battlegrounds is a 3D combat experience developed in Roblox. Players enter a free-for-all arena as different types of vampires, managing supernatural abilities to unleash devastating attacks. The project emphasized fast-paced movement, hitbox precision, and accurate and appealing visual feedback through custom ParticleEmitters and beams.",
         features: [
@@ -58,10 +62,29 @@ const projects = [
             "Custom Roblox VFX and Shaders",
             "Sleek Gothic UI Design"
         ],
-        visualColor: "bg-secondary/10",
+        visualColor: "bg-accent/10",
         gallery: [
             { type: 'image', content: 'assets/NocturneBattlegroundsLogo.png' },
             { type: 'image', content: 'assets/NocturneBattlegroundsGame.png' }
+        ]
+    },
+    {
+        id: 4,
+        title: "Roblox VFX",
+        tags: "Roblox",
+        thumbnail: "",
+        colorClass: "text-accent",
+        bgClass: "bg-accent/10",
+        shortDesc: "Personal projects I either made for fun and experimenting.",
+        longDesc: "A collection of personal VFX projects and experiments created in Roblox Studio. These include various particle systems, beams, trails and environmental effects.",
+        features: [
+            "Advanced Particle Systems",
+            "Custom Shader Development",
+            "Environmental VFX Experiments"
+        ],
+        visualColor: "bg-accent/10",
+        gallery: [
+            { type: 'color', content: 'bg-accent/20' }
         ]
     }
 ];
@@ -319,14 +342,19 @@ function observeElements() {
 }
 
 // Typewriter Effect
-const typewriterElement = document.getElementById('typewriter');
 const phrases = ["VFX Artist", "Technical Artist"];
 let phraseIndex = 0;
-let charIndex = phrases[0].length;
+let charIndex = 0;
 let isDeleting = false;
 let typeSpeed = 100;
 
 function type() {
+    const typewriterElement = document.getElementById('typewriter');
+    if (!typewriterElement) {
+        setTimeout(type, 100);
+        return;
+    }
+
     const currentPhrase = phrases[phraseIndex];
 
     if (isDeleting) {
