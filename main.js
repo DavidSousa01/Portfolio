@@ -156,15 +156,15 @@ function renderProjects() {
                 <div class="absolute inset-0 bg-gradient-to-br from-surface-highlight to-black"></div>
                 <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-100 transition-opacity duration-700">
                    ${project.thumbnail
-                    ? `<img src="${project.thumbnail}" class="w-full h-full object-contain opacity-60 transition-transform duration-700 group-hover:scale-105" alt="${project.title}">`
+                    ? `<img src="${project.thumbnail}" class="w-full h-full object-contain opacity-60 transition-transform duration-700 group-hover:scale-105" alt="${project.title}" loading="lazy">`
                     : `<div class="w-3/4 h-3/4 ${project.visualColor} rounded-full blur-3xl"></div>`
                 }
                 </div>
-                <div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-all duration-300">
-                  <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="${project.colorClass} font-mono text-xs uppercase tracking-wider mb-2 block">${project.tags}</span>
-                    <h3 class="text-3xl font-bold mb-2 text-white">${project.title}</h3>
-                    <p class="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent opacity-100 md:opacity-90 transition-all duration-300">
+                  <div class="transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="${project.colorClass} font-mono text-[10px] md:text-xs uppercase tracking-wider mb-2 block">${project.tags}</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">${project.title}</h3>
+                    <p class="text-gray-400 text-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75 line-clamp-2 md:line-clamp-none">
                       ${project.shortDesc}
                     </p>
                   </div>
@@ -452,13 +452,23 @@ mobileNavLinks.forEach(link => {
 });
 
 const navbar = document.getElementById('navbar');
+let lastScrollY = window.scrollY;
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.classList.add('shadow-lg', 'bg-void/95');
-        } else {
-            navbar.classList.remove('shadow-lg', 'bg-void/95');
-        }
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            if (navbar) {
+                if (lastScrollY > 50) {
+                    navbar.classList.add('shadow-lg', 'bg-void/95', 'backdrop-blur-md');
+                } else {
+                    navbar.classList.remove('shadow-lg', 'bg-void/95', 'backdrop-blur-md');
+                }
+            }
+            ticking = false;
+        });
+        ticking = true;
     }
 });
 
@@ -480,7 +490,7 @@ const observer = new IntersectionObserver((entries) => {
 
 function observeElements() {
     document.querySelectorAll('section h2, section > div > p, article, .glass-panel').forEach((el) => {
-        el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+        el.classList.add('transition-[opacity,transform]', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
         observer.observe(el);
     });
 }
@@ -492,10 +502,22 @@ let charIndex = 0;
 let isDeleting = false;
 let typeSpeed = 100;
 
+let isTypewriterVisible = true;
+const typewriterObserver = new IntersectionObserver((entries) => {
+    isTypewriterVisible = entries[0].isIntersecting;
+}, { threshold: 0.1 });
+
 function type() {
     const typewriterElement = document.getElementById('typewriter');
     if (!typewriterElement) {
         setTimeout(type, 100);
+        return;
+    }
+
+    typewriterObserver.observe(typewriterElement);
+
+    if (!isTypewriterVisible) {
+        setTimeout(type, 500);
         return;
     }
 
@@ -721,8 +743,16 @@ function initLightPillar() {
     const targetFPS = effectiveQuality === 'low' ? 30 : 60;
     const frameTime = 1000 / targetFPS;
 
+    let isPillarVisible = true;
+    const pillarObserver = new IntersectionObserver((entries) => {
+        isPillarVisible = entries[0].isIntersecting;
+    }, { threshold: 0.1 });
+    pillarObserver.observe(container);
+
     function animate(currentTime) {
         requestAnimationFrame(animate);
+
+        if (!isPillarVisible) return;
 
         const deltaTime = currentTime - lastTime;
         if (deltaTime >= frameTime) {
