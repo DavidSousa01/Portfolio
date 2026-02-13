@@ -530,17 +530,17 @@ function initLightPillar() {
 
     // Configuration from provided spec
     const props = {
-        topColor: '#1e00ff',
-        bottomColor: '#bd05b7',
-        intensity: 1.1,
-        rotationSpeed: 0.2,
+        topColor: '#bdebff',
+        bottomColor: '#22009e',
+        intensity: 0.3,
+        rotationSpeed: 0.1,
         interactive: false,
-        glowAmount: 0.003,
-        pillarWidth: 5.7,
-        pillarHeight: 0.3,
-        noiseIntensity: 0.2,
-        pillarRotation: 360,
-        mixBlendMode: 'lighten',
+        glowAmount: 0.002,
+        pillarWidth: 5.3,
+        pillarHeight: 0.6,
+        noiseIntensity: 0.5,
+        pillarRotation: 91,
+        mixBlendMode: 'screen',
         quality: 'high'
     };
 
