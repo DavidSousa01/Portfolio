@@ -522,8 +522,98 @@ function type() {
     setTimeout(type, typeSpeed);
 }
 
+// Hero Canvas Animation
+function initHeroCanvas() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) {
+        console.error('Hero canvas not found');
+        return;
+    }
+    console.log('Initializing Hero Canvas...');
+
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.speed = 0.2 + Math.random() * 0.5; // Slower speed
+            this.amplitude = 15 + Math.random() * 35;
+            this.frequency = 0.002 + Math.random() * 0.004;
+            this.offset = Math.random() * Math.PI * 2;
+            this.length = 100 + Math.random() * 200; // Longer trails
+            this.opacity = 0.3 + Math.random() * 0.4; // More vibrant
+            this.color = Math.random() > 0.5 ? '#00d4ff' : '#7000ff';
+        }
+
+        update() {
+            this.x += this.speed;
+            this.offset += this.frequency; // Add movement over time
+
+            // Side to side logic (reset when off screen)
+            if (this.x > width + this.length) {
+                this.x = -this.length;
+                this.y = Math.random() * height;
+            }
+        }
+
+        draw() {
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+
+            // Draw trail following the wave path segment by segment for alpha effect
+            for (let i = 0; i < this.length; i += 5) {
+                const px = this.x - i;
+                const py = this.y + Math.sin(px * 0.005 + this.offset) * this.amplitude;
+
+                const nextX = px - 5;
+                const nextY = this.y + Math.sin(nextX * 0.005 + this.offset) * this.amplitude;
+
+                const alpha = (1 - i / this.length) * this.opacity;
+
+                ctx.beginPath();
+                ctx.strokeStyle = this.color;
+                ctx.globalAlpha = alpha;
+                ctx.moveTo(px, py);
+                ctx.lineTo(nextX, nextY);
+                ctx.stroke();
+            }
+        }
+    }
+
+    function init() {
+        resize();
+        particles = Array.from({ length: 40 }, () => new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    init();
+    animate();
+}
+
 // Initial Render
 renderProjects();
 type();
+initHeroCanvas();
 
 console.log('Portfolio initialized');
