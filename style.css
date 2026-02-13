@@ -27,6 +27,15 @@
     .glass-panel {
         @apply bg-surface/80 backdrop-blur-md border border-white/5;
     }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+    }
 }
 
 /* Custom Scrollbar */

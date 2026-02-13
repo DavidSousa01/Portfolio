@@ -44,7 +44,7 @@ const projects = [
         gallery: [
             { type: 'image', content: 'assets/SaveState Logo.png' },
             { type: 'image', content: 'assets/SaveStateGame1.png' },
-            { type: 'image', content: 'assets/Saved State Game.png' }
+            { type: 'video', content: 'assets/SaveStateUI.mp4' }
         ]
     },
     {
@@ -127,6 +127,14 @@ const carouselVisual = document.getElementById('modal-visual');
 const carouselPrev = document.getElementById('carousel-prev');
 const carouselNext = document.getElementById('carousel-next');
 const carouselDots = document.getElementById('carousel-dots');
+const galleryPreview = document.getElementById('modal-gallery-preview');
+
+// Mobile Menu Elements
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const hamburgerIcon = document.getElementById('hamburger-icon');
+const closeIcon = document.getElementById('close-icon');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
 let currentProject = null;
 let currentSlideIndex = 0;
@@ -255,6 +263,38 @@ function updateCarousel() {
         carouselPrev.disabled = true;
         carouselNext.disabled = true;
     }
+
+    // Update Thumbnails Preview
+    if (galleryPreview) {
+        galleryPreview.innerHTML = currentProject.gallery.map((item, idx) => {
+            const isActive = idx === currentSlideIndex;
+            let content = '';
+
+            if (item.type === 'color') {
+                content = `<div class="w-full h-full ${item.content} rounded-sm"></div>`;
+            } else if (item.type === 'image') {
+                content = `<img src="${item.content}" class="w-full h-full object-cover">`;
+            } else if (item.type === 'video') {
+                // For video, we show a simplified preview or icon
+                content = `
+                    <div class="w-full h-full bg-black flex items-center justify-center relative">
+                        <svg class="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </div>
+                `;
+            }
+
+            return `
+                <div 
+                    onclick="event.stopPropagation(); goToSlide(${idx})"
+                    class="flex-shrink-0 w-20 aspect-video rounded-lg overflow-hidden cursor-pointer transition-all duration-300 border-2 ${isActive ? 'border-primary ring-2 ring-primary/20 scale-105' : 'border-transparent opacity-50 hover:opacity-100'}"
+                >
+                    ${content}
+                </div>
+            `;
+        }).join('');
+    }
 }
 
 function nextSlide() {
@@ -315,6 +355,39 @@ if (carouselNext) carouselNext.addEventListener('click', (e) => {
 if (carouselPrev) carouselPrev.addEventListener('click', (e) => {
     e.stopPropagation();
     prevSlide();
+});
+
+// Mobile Menu Logic
+function toggleMobileMenu() {
+    const isOpen = mobileMenu.classList.contains('translate-x-0');
+    if (isOpen) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+    } else {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        // We don't necessarily want to lock background scroll if it's just a side nav
+        // But for consistency with your previous request I'll keep it or let it scroll
+    }
+}
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+}
+
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
 });
 
 const navbar = document.getElementById('navbar');
