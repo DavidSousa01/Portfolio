@@ -24,7 +24,7 @@ const projects = [
         gallery: [
             { type: 'image', content: 'assets/Intempo Logo.png' },
             { type: 'image', content: 'assets/Intempo Game.png' },
-            { type: 'image', content: 'assets/Intempo Game.png' }
+            { type: 'video', content: 'assets/InTempo Trailer.mp4' }
         ]
     },
     {
@@ -65,14 +65,14 @@ const projects = [
         visualColor: "bg-accent/10",
         gallery: [
             { type: 'image', content: 'assets/NocturneBattlegroundsLogo.png' },
-            { type: 'image', content: 'assets/NocturneBattlegroundsGame.png' }
+            { type: 'video', content: 'assets/NocturneBGClip1.mp4' }
         ]
     },
     {
         id: 4,
         title: "Roblox VFX",
         tags: "Roblox",
-        thumbnail: "",
+        thumbnail: "assets/RobloxLogo.jpg",
         colorClass: "text-accent",
         bgClass: "bg-accent/10",
         shortDesc: "Personal projects I either made for fun and experimenting.",
@@ -84,7 +84,7 @@ const projects = [
         ],
         visualColor: "bg-accent/10",
         gallery: [
-            { type: 'color', content: 'bg-accent/20' }
+            { type: 'video', content: 'assets/Rasengan.mp4' }
         ]
     }
 ];
@@ -235,7 +235,7 @@ function updateCarousel() {
     } else if (slide.type === 'image') {
         contentDiv.innerHTML = `<img src="${slide.content}" class="w-full h-full object-contain" alt="Project Screenshot">`;
     } else if (slide.type === 'video') {
-        contentDiv.innerHTML = `<video src="${slide.content}" class="w-full h-full object-cover" autoplay loop muted playsinline></video>`;
+        contentDiv.innerHTML = `<video src="${slide.content}" class="w-full h-full object-contain" autoplay loop muted playsinline></video>`;
     }
 
     carouselVisual.appendChild(contentDiv);
@@ -288,6 +288,16 @@ function closeModal() {
 
 if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
 if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+// Handle clicking outside the modal content to close
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        // If the click is on the modal container itself or the scroll wrapper, but NOT inside the modal-content
+        if (modalContent && !modalContent.contains(e.target)) {
+            closeModal();
+        }
+    });
+}
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
