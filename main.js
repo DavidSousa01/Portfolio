@@ -136,6 +136,11 @@ const hamburgerIcon = document.getElementById('hamburger-icon');
 const closeIcon = document.getElementById('close-icon');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
+// Fullscreen Viewer Elements
+const fullscreenViewer = document.getElementById('fullscreen-viewer');
+const fullscreenContent = document.getElementById('fullscreen-content');
+const fullscreenClose = document.getElementById('fullscreen-close');
+
 let currentProject = null;
 let currentSlideIndex = 0;
 
@@ -340,7 +345,13 @@ if (modal) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+        if (!fullscreenViewer.classList.contains('hidden')) {
+            closeFullscreen();
+        } else {
+            closeModal();
+        }
+    }
     if (modal && !modal.classList.contains('hidden')) {
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft') prevSlide();
@@ -356,6 +367,55 @@ if (carouselPrev) carouselPrev.addEventListener('click', (e) => {
     e.stopPropagation();
     prevSlide();
 });
+
+// Fullscreen Logic
+function openFullscreen() {
+    if (!currentProject || !currentProject.gallery) return;
+    const slide = currentProject.gallery[currentSlideIndex];
+
+    fullscreenContent.innerHTML = '';
+    if (slide.type === 'image') {
+        const img = document.createElement('img');
+        img.src = slide.content;
+        img.className = 'max-w-full max-h-full object-contain';
+        fullscreenContent.appendChild(img);
+    } else if (slide.type === 'video') {
+        const video = document.createElement('video');
+        video.src = slide.content;
+        video.className = 'max-w-full max-h-full';
+        video.controls = true;
+        video.autoplay = true;
+        fullscreenContent.appendChild(video);
+    } else {
+        return; // Don't open for colors
+    }
+
+    fullscreenViewer.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+    fullscreenViewer.classList.add('hidden');
+    fullscreenContent.innerHTML = '';
+    // Only restore scroll if main modal is also closed
+    if (modal && modal.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+    }
+}
+
+if (carouselVisual) {
+    carouselVisual.addEventListener('click', openFullscreen);
+}
+
+if (fullscreenClose) {
+    fullscreenClose.addEventListener('click', closeFullscreen);
+}
+
+if (fullscreenViewer) {
+    fullscreenViewer.addEventListener('click', (e) => {
+        if (e.target === fullscreenViewer) closeFullscreen();
+    });
+}
 
 // Mobile Menu Logic
 function toggleMobileMenu() {
