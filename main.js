@@ -85,7 +85,9 @@ const projects = [
         ],
         visualColor: "bg-accent/10",
         gallery: [
-            { type: 'video', content: 'assets/Rasengan.mp4' }
+            { type: 'video', content: 'assets/Rasengan.mp4' },
+            { type: 'video', content: 'assets/BOOM.mp4' }
+            { type: 'video', content: 'assets/SunBurn.mp4' }
         ]
     }
 ];
