@@ -26,7 +26,8 @@ const projects = [
             { type: 'image', content: 'assets/Intempo Logo.png' },
             { type: 'image', content: 'assets/Intempo Game.png' },
             { type: 'video', content: 'assets/InTempo Trailer.mp4' }
-        ]
+        ],
+        link: "#"
     },
     {
         id: 2,
@@ -46,7 +47,8 @@ const projects = [
             { type: 'image', content: 'assets/SaveState Logo.png' },
             { type: 'image', content: 'assets/SaveStateGame1.png' },
             { type: 'video', content: 'assets/SaveStateUI.mp4' }
-        ]
+        ],
+        link: "#"
     },
     {
         id: 3,
@@ -67,7 +69,8 @@ const projects = [
         gallery: [
             { type: 'image', content: 'assets/NocturneBattlegroundsLogo.png' },
             { type: 'video', content: 'assets/NocturneBGClip1.mp4' }
-        ]
+        ],
+        link: "#"
     },
     {
         id: 4,
@@ -88,7 +91,8 @@ const projects = [
             { type: 'video', content: 'assets/Rasengan.mp4' },
             { type: 'video', content: 'assets/BOOM.mp4' },
             { type: 'video', content: 'assets/SunBurn.mp4' }
-        ]
+        ],
+        link: "#"
     }
 ];
 
@@ -98,6 +102,7 @@ const gameJams = [
         title: "Bubble Trouble",
         event: "Global Game Jam 2025",
         role: "SFX / VFX",
+        thumbnail: "assets/BubbleTroubleGame.png",
         desc: "A pixelated classic Arcade Beat 'Em Up with a unique bubble-based combat system.",
         longDesc: "Built in 48 hours for the Global Game Jam, Bubble Trouble is a 2D Beat 'Em Up game where players fight off enemies using bubbles. This was my first time trying Sound Design with no prior experience. I do have a small background in music so creating an 8bit track and effects for actions was quite entertaining.",
         features: [
@@ -110,10 +115,34 @@ const gameJams = [
         bgClass: "bg-primary/10",
         visualColor: "bg-primary/20",
         gallery: [
-            { type: 'color', content: 'bg-primary/20' },
-            { type: 'color', content: 'bg-primary/40' }
+            { type: 'image', content: 'assets/BubbleTroubleGame.png' }
         ],
         link: "#"
+    },
+    {
+        title: "Esc.",
+        event: "Mad game Jam 2026",
+        role: "VFX/Programmer/SFX",
+        thumbnail: "assets/EscGame.png",
+        desc: "Arcade fast-paced, reflex-based game",
+        longDesc: "Built in 48 hours for the Mad Game Jam 2026, Esc is a arcade-ish, fast-paced, reflex-based game. The theme of the GameJam was was Escape hence the name Esc. It is a 2D game where you must draw sigils and defend yourself from enemies trying to get you as you go through different levels. Personally I was incharge of making the code for the Pattern Recognition, the visual effects, animation implementation and Sound Design.",
+        features: [
+            "Pattern Recognition",
+            "Visual Effects",
+            "Animation Implementation",
+            "Sound Design"
+        ],
+        tags: ["GODOT", "GDScript"],
+        modalTags: "GODOT / GDScript",
+        color: "text-accent",
+        bgClass: "bg-accent/10",
+        visualColor: "bg-accent/20",
+        gallery: [
+            { type: 'image', content: 'assets/EscGame.png' },
+            { type: 'image', content: 'assets/Esc1.jpg' },
+            { type: 'image', content: 'assets/Esc2.jpg' }
+        ],
+        link: "https://davidsousa01.itch.io/esc"
     }
 ];
 
@@ -180,29 +209,31 @@ function renderProjects() {
     if (jamsContainer) {
         jamsContainer.innerHTML = '';
         gameJams.forEach(jam => {
-            const div = document.createElement('div');
-            div.className = 'bg-surface/50 border border-white/5 p-6 rounded-xl hover:bg-surface hover:border-white/10 transition-all group cursor-pointer';
-            div.innerHTML = `
-                <div class="flex justify-between items-start mb-4">
-                    <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">${jam.event}</span>
-                    <a href="${jam.link}" class="text-white hover:text-primary transition-colors" onclick="event.stopPropagation()">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
+            const article = document.createElement('article');
+            article.className = 'group relative aspect-video bg-surface rounded-2xl overflow-hidden cursor-pointer';
+            article.innerHTML = `
+                <div class="absolute inset-0 bg-gradient-to-br from-surface-highlight to-black"></div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-100 transition-opacity duration-700">
+                   ${jam.thumbnail
+                    ? `<img src="${jam.thumbnail}" class="w-full h-full object-contain opacity-60 transition-transform duration-700 group-hover:scale-105" alt="${jam.title}" loading="lazy">`
+                    : `<div class="w-3/4 h-3/4 ${jam.visualColor} rounded-full blur-3xl"></div>`
+                }
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">${jam.title}</h3>
-                <p class="text-gray-400 text-sm mb-4 leading-relaxed">${jam.desc}</p>
-                <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
-                    <span class="text-xs font-bold ${jam.color}">${jam.role}</span>
-                    <div class="flex gap-2">
-                        ${jam.tags.map(tag => `<span class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400">${tag}</span>`).join('')}
-                    </div>
+                <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent opacity-100 md:opacity-90 transition-all duration-300">
+                  <div class="transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="${jam.color} font-mono text-[10px] md:text-xs uppercase tracking-wider mb-2 block">${jam.event}</span>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">${jam.title}</h3>
+                    <p class="text-gray-400 text-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75 line-clamp-2 md:line-clamp-none">
+                      ${jam.desc}
+                    </p>
+                  </div>
                 </div>
             `;
-            div.addEventListener('click', () => openModal({
+            article.addEventListener('click', () => openModal({
                 ...jam,
                 colorClass: jam.color
             }));
-            jamsContainer.appendChild(div);
+            jamsContainer.appendChild(article);
         });
     }
 
@@ -221,8 +252,29 @@ function openModal(project) {
 
     const featuresList = document.getElementById('modal-features');
     featuresList.innerHTML = project.features.map(feat =>
-        `<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 ${project.bgClass.replace('/10', '')} rounded-full"></div>${feat}</li>`
+        `<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 ${project.bgClass?.replace('/10', '') || 'bg-primary'} rounded-full"></div>${feat}</li>`
     ).join('');
+
+    // Add External Link Button
+    const existingLink = document.getElementById('modal-external-link');
+    if (existingLink) existingLink.remove();
+
+    if (project.link) {
+        const linkBtn = document.createElement('a');
+        linkBtn.id = 'modal-external-link';
+        linkBtn.href = project.link;
+        linkBtn.target = '_blank';
+        linkBtn.rel = 'noopener noreferrer';
+        linkBtn.className = 'inline-flex items-center gap-1.5 text-primary hover:text-white transition-colors text-sm font-bold mt-4 md:mt-0 group/link';
+        linkBtn.innerHTML = `
+            <span class="border-b border-primary/30 group-hover/link:border-white transition-colors">View Project</span>
+        `;
+        // Find existing parent of title to append button or insert after info
+        const titleWrapper = document.getElementById('modal-title').closest('.flex-col');
+        if (titleWrapper && titleWrapper.parentElement) {
+            titleWrapper.parentElement.appendChild(linkBtn);
+        }
+    }
 
     updateCarousel();
 
