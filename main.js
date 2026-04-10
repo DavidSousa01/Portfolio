@@ -550,7 +550,7 @@ function observeElements() {
 }
 
 // Typewriter Effect
-const phrases = ["VFX Artist", "Technical Artist"];
+const phrases = ["VFX Artist", "QA Tester"];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
