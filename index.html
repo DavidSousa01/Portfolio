@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>David | Technical Artist Portfolio</title>
+    <title>David Sousa | Technical Artist & VFX Portfolio</title>
     <meta name="description"
-        content="Technical Artist Portfolio showcasing shaders, tools, and pipeine optimization." />
+        content="Technical Artist & Game Dev VFX Portfolio showcasing shaders, particle systems, and real-time engine workflows." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 
-<body class="selection:bg-primary selection:text-void">
+<body class="selection:bg-primary selection:text-void bg-void text-gray-200">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-sm border-b border-white/5 bg-void/80"
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md border-b border-white/5 bg-void/90"
         id="navbar">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="font-sans font-bold text-2xl tracking-tighter text-white">
@@ -21,19 +21,17 @@
             </a>
             <div class="hidden md:flex gap-8">
                 <a href="#portfolio"
-                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Portfolio</a>
+                    class="text-gray-400 hover:text-primary transition-colors text-xs uppercase tracking-widest font-mono font-semibold">Portfolio</a>
                 <a href="#skills"
-                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Skills</a>
-                <a href="#gamejams"
-                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Jams</a>
+                    class="text-gray-400 hover:text-primary transition-colors text-xs uppercase tracking-widest font-mono font-semibold">Skills</a>
                 <a href="#experience"
-                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">Experience</a>
+                    class="text-gray-400 hover:text-primary transition-colors text-xs uppercase tracking-widest font-mono font-semibold">Experience</a>
                 <a href="#about"
-                    class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-widest font-semibold">About</a>
+                    class="text-gray-400 hover:text-primary transition-colors text-xs uppercase tracking-widest font-mono font-semibold">About</a>
             </div>
             <div class="flex items-center gap-4">
                 <a href="#contact"
-                    class="hidden md:block px-6 py-2 border border-white/20 hover:border-primary hover:text-primary transition-all rounded-full text-sm font-semibold uppercase tracking-wide">
+                    class="hidden md:block px-6 py-2 border border-primary/50 text-primary hover:bg-primary hover:text-void transition-all rounded-full text-xs font-mono font-bold uppercase tracking-wider shadow-lg">
                     Get in Touch
                 </a>
 
@@ -55,86 +53,92 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Overlay (Right-aligned drawer) -->
+        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
-            class="fixed top-20 right-0 w-64 h-auto max-h-[calc(100vh-5rem)] bg-black z-40 md:hidden flex flex-col items-start p-8 gap-6 translate-x-full transition-transform duration-500 border-l border-b border-white/10 rounded-bl-3xl overflow-y-auto scrollbar-hide">
+            class="fixed top-20 right-0 w-64 h-auto max-h-[calc(100vh-5rem)] bg-surface z-40 md:hidden flex flex-col items-start p-8 gap-6 translate-x-full transition-transform duration-500 border-l border-b border-white/10 rounded-bl-3xl overflow-y-auto">
             <a href="#portfolio"
                 class="mobile-nav-link text-lg font-semibold tracking-wide hover:text-primary transition-colors">Portfolio</a>
             <a href="#skills"
                 class="mobile-nav-link text-lg font-semibold tracking-wide hover:text-primary transition-colors">Skills</a>
-            <a href="#gamejams"
-                class="mobile-nav-link text-lg font-semibold tracking-wide hover:text-primary transition-colors">Jams</a>
             <a href="#experience"
                 class="mobile-nav-link text-lg font-semibold tracking-wide hover:text-primary transition-colors">Experience</a>
             <a href="#about"
                 class="mobile-nav-link text-lg font-semibold tracking-wide hover:text-primary transition-colors">About</a>
             <a href="#contact"
-                class="mobile-nav-link px-6 py-2 border border-primary text-primary rounded-full font-bold text-sm mt-2 hover:bg-primary hover:text-void transition-all">Get
+                class="mobile-nav-link px-6 py-2 border border-primary text-primary rounded-full font-bold text-xs mt-2 hover:bg-primary hover:text-void transition-all uppercase tracking-wider">Get
                 in Touch</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Decor Background -->
+        <!-- Ambient Background Canvas Container -->
         <div class="absolute inset-0 z-0 overflow-hidden bg-void">
-            <!-- Existing ambient glow checks -->
-            <div
-                class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none">
-            </div>
-            <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px] animate-blob mix-blend-screen pointer-events-none"
-                style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-1/4 left-1/3 w-96 h-96 bg-accent/20 rounded-full blur-[100px] animate-blob mix-blend-screen pointer-events-none"
-                style="animation-delay: 4s;"></div>
-            <div
-                class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none">
-            </div>
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute bottom-1/3 right-1/4 w-[450px] h-[450px] bg-secondary/15 rounded-full blur-[140px] pointer-events-none"></div>
             <div id="light-pillar-container" class="absolute inset-0 z-0 pointer-events-none"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <h1 class="font-bold font-sans mb-8 leading-tight">
-                <span class="text-5xl md:text-9xl block mb-2">David Sousa</span>
-                <span class="text-2xl md:text-5xl">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Junior</span>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500"
-                        id="typewriter">VFX Artist</span><span class="text-primary animate-pulse" id="cursor">|</span>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary mb-8 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                <span>REAL-TIME VFX & TECHNICAL ARTIST</span>
+            </div>
+
+            <h1 class="font-bold font-sans mb-6 leading-tight">
+                <span class="text-5xl md:text-8xl block mb-4 tracking-tight">David Sousa</span>
+                <span class="text-2xl md:text-4xl text-gray-300 font-normal">
+                    Junior <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-300 to-secondary font-semibold" id="typewriter">VFX Artist</span><span class="text-primary animate-pulse" id="cursor">|</span>
                 </span>
             </h1>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+
+            <p class="max-w-2xl mx-auto text-gray-400 text-sm md:text-base mb-10 leading-relaxed">
+                Crafting visual effects, particle systems, and shader mechanics for real-time game engines. 
+                Focused on visual feedback, performance optimization, and player experience across Unity, Unreal Engine, and Roblox.
+            </p>
+
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap justify-center gap-2 max-w-xl mx-auto mb-10">
+                <span class="px-3 py-1 bg-surface-highlight border border-white/10 rounded-md text-xs font-mono text-gray-300">Roblox Studio</span>
+                <span class="px-3 py-1 bg-surface-highlight border border-white/10 rounded-md text-xs font-mono text-gray-300">Godot</span>
+                <span class="px-3 py-1 bg-surface-highlight border border-white/10 rounded-md text-xs font-mono text-gray-300">Blender</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a href="#portfolio"
-                    class="group relative px-8 py-4 bg-white text-void font-bold rounded-full overflow-hidden w-full sm:w-auto">
-                    <div
-                        class="absolute inset-0 w-full h-full bg-primary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out">
-                    </div>
-                    <span class="relative group-hover:text-void transition-colors">View Portfolio</span>
+                    class="px-8 py-4 bg-primary text-void font-bold rounded-full hover:bg-white transition-all text-sm uppercase tracking-wider w-full sm:w-auto shadow-lg shadow-primary/20">
+                    Explore Showcase
                 </a>
                 <a href="#contact"
-                    class="px-8 py-4 bg-transparent border border-white/20 rounded-full hover:bg-white/5 transition-colors font-semibold w-full sm:w-auto">
-                    Contact Me
+                    class="px-8 py-4 bg-surface border border-white/15 rounded-full hover:border-primary hover:text-primary transition-all font-semibold text-sm uppercase tracking-wider w-full sm:w-auto">
+                    Get in Touch
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-32 bg-surface relative border-t border-white/5">
+    <!-- Portfolio Section with Category Filters -->
+    <section id="portfolio" class="py-32 bg-surface/50 relative border-t border-white/5">
         <div class="container mx-auto px-6">
-            <div
-                class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-white/10 pb-8">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-4">Portfolio</h2>
-                    <p class="text-gray-400 max-w-md">A showcase of my projects across different engines and tools.</p>
-                </div>
-                <div class="flex gap-2 text-primary font-mono text-sm mt-6 md:mt-0">
-                    <span>// UNITY</span>
-                    <span>// UNREAL</span>
-                    <span>// ROBLOX</span>
+                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-3">Portfolio & Showcase</h2>
+                    <p class="text-gray-400 max-w-lg text-sm md:text-base">Explore projects, real-time particle work, and technical breakdown spec sheets.</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12" id="projects-container">
-                <!-- Projects will be injected here via JavaScript -->
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2 mb-12" id="filter-container">
+                <button class="filter-btn bg-primary text-void border-primary" data-filter="all">All Projects</button>
+                <button class="filter-btn bg-void text-gray-400 border-white/10" data-filter="vfx">VFX & Shaders</button>
+                <button class="filter-btn bg-void text-gray-400 border-white/10" data-filter="unity-unreal">Unity & Unreal</button>
+                <button class="filter-btn bg-void text-gray-400 border-white/10" data-filter="roblox">Roblox</button>
+                <button class="filter-btn bg-void text-gray-400 border-white/10" data-filter="jams">Game Jams</button>
+            </div>
+
+            <!-- Dynamic Project Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10" id="projects-container">
+                <!-- Injected via main.js -->
             </div>
         </div>
     </section>
@@ -142,208 +146,135 @@
     <!-- Skills Section -->
     <section id="skills" class="py-32 bg-void relative border-t border-white/5">
         <div class="container mx-auto px-6">
-            <div
-                class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 border-b border-white/10 pb-8">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-4">Skills & Expertise</h2>
-                    <p class="text-gray-400 max-w-md">My best areas and where I shine.</p>
-                </div>
+            <div class="mb-16 border-b border-white/10 pb-8">
+                <h2 class="text-4xl md:text-5xl font-bold font-sans mb-3">Skills & Technical Expertise</h2>
+                <p class="text-gray-400 max-w-md text-sm md:text-base">Specialized skills across real-time VFX, shader creation, and gameplay architecture.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
+                <!-- Skill Pillar 1 -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-primary/50 transition-colors group">
-                    <div
-                        class="h-12 w-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path transform="rotate(12 12 12)" fill-rule="evenodd" clip-rule="evenodd"
-                                d="M4 4H20V20H4V4ZM8.5 8.5H15.5V15.5H8.5V8.5Z" />
+                    <div class="h-12 w-12 bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 font-sans">ROBLOX</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Proficient in Roblox Studio and its
-                        capabilities around
-                        VFX and building.</p>
-                    <ul class="text-sm font-mono text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Particles/Beams/Trails
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Basic Rig (R6 & R15) Animation
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Basic Building
-                        </li>
+                    <h3 class="text-2xl font-bold mb-4 font-sans text-white">Real-Time VFX</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Designing particle systems, trails, beams, and environmental visual feedback.</p>
+                    <ul class="text-xs font-mono text-gray-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Roblox ParticleEmitter & Beams</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Unity Particle System & VFX Graph</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Unreal Niagara Basics</li>
                     </ul>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Skill Pillar 2 -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-secondary/50 transition-colors group">
-                    <div
-                        class="h-12 w-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+                    <div class="h-12 w-12 bg-secondary/20 rounded-xl flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M8 12s2-4 4-4 4 4 4 4"></path>
-                            <path d="M8 12s2 4 4 4 4-4 4-4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 font-sans">Shaders & VFX</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Creating visual effects to compliment game
-                        actions.</p>
-                    <ul class="text-sm font-mono text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>ROBLOX
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>Blender
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>After Effects
-                        </li>
+                    <h3 class="text-2xl font-bold mb-4 font-sans text-white">Shaders & Art</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Creating custom material shaders, texture sheets, and post-processing FX.</p>
+                    <ul class="text-xs font-mono text-gray-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>Unity Shader Graph</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>Blender 3D Asset Prep</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>After Effects Sprite Sheets</li>
                     </ul>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Skill Pillar 3 -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-accent/50 transition-colors group">
-                    <div
-                        class="h-12 w-12 bg-accent/20 rounded-lg flex items-center justify-center mb-6 text-accent group-hover:scale-110 transition-transform">
+                    <div class="h-12 w-12 bg-accent/20 rounded-xl flex items-center justify-center mb-6 text-accent group-hover:scale-110 transition-transform">
                         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="16 18 22 12 16 6"></polyline>
                             <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 font-sans">Programming</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Creation of UI logic and player interaction
-                        systems.</p>
-                    <ul class="text-sm font-mono text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-accent rounded-full"></div>C# / GDScript / Luau
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-accent rounded-full"></div>UI Architecture
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-accent rounded-full"></div>Gameplay Mechanics
-                        </li>
+                    <h3 class="text-2xl font-bold mb-4 font-sans text-white">Programming</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Coding player physics, gesture algorithms, and custom game mechanics.</p>
+                    <ul class="text-xs font-mono text-gray-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-accent rounded-full"></div>C# / GDScript / Luau</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-accent rounded-full"></div>Unreal Blueprints</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-accent rounded-full"></div>UI & Gameplay Systems</li>
                     </ul>
                 </div>
 
-                <!-- Card 4 -->
+                <!-- Skill Pillar 4 -->
                 <div class="glass-panel p-8 rounded-2xl hover:border-primary/50 transition-colors group">
-                    <div
-                        class="h-12 w-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                    <div class="h-12 w-12 bg-primary/20 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 font-sans">QA Tester</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Ensuring game quality through thorough
-                        testing, playtesting, and bug reporting.</p>
-                    <ul class="text-sm font-mono text-gray-500 space-y-2">
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Bug Tracking & Reporting
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Test Case Execution
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Playtesting & Feedback
-                        </li>
+                    <h3 class="text-2xl font-bold mb-4 font-sans text-white">QA & Testing</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Ensuring game build quality through rigorous bug tracking and test case execution.</p>
+                    <ul class="text-xs font-mono text-gray-400 space-y-2.5">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>FQA Curricular Internship</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Bug Tracking & Reporting</li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div>Playtesting & UX Feedback</li>
                     </ul>
                 </div>
-            </div>
-    </section>
-
-    <!-- Game Jams Section -->
-    <section id="gamejams" class="py-32 bg-surface relative border-t border-white/5">
-        <div class="container mx-auto px-6">
-            <div
-                class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 border-b border-white/10 pb-8">
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold font-sans mb-4">Game Jams</h2>
-                    <p class="text-gray-400 max-w-md">Rapid prototyping and creative chaos.</p>
-                </div>
-                <div class="flex gap-2 text-primary font-mono text-sm mt-6 md:mt-0">
-                    <span>// GLOBAL GAME JAM</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12" id="jams-container">
-                <!-- Data injected via JS -->
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-32 bg-void relative border-t border-white/5">
+    <section id="experience" class="py-32 bg-surface/30 relative border-t border-white/5">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-16 text-center">Experience</h2>
+            <h2 class="text-4xl md:text-5xl font-bold font-sans mb-16 text-center">Work & Academic Experience</h2>
 
-            <div class="max-w-4xl mx-auto space-y-12">
-                <!-- Experience Item 1 -->
-                <div class="relative pl-8 border-l-2 border-primary/30 group">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-primary rounded-full group-hover:bg-primary transition-colors">
-                    </div>
-                    <div
-                        class="bg-surface/30 p-8 rounded-2xl border border-white/5 hover:border-primary/20 transition-all">
+            <div class="max-w-4xl mx-auto space-y-10">
+                <!-- Item 1 -->
+                <div class="relative pl-8 border-l-2 border-primary/40 group">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-primary rounded-full group-hover:bg-primary transition-colors"></div>
+                    <div class="bg-surface p-8 rounded-2xl border border-white/5 hover:border-primary/30 transition-all">
                         <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold">Side</h3>
-                                <p class="text-primary font-mono text-sm tracking-widest uppercase">FQA Tester</p>
+                                <h3 class="text-2xl font-bold text-white">Side</h3>
+                                <p class="text-primary font-mono text-xs tracking-widest uppercase mt-1">FQA Tester</p>
                             </div>
-                            <span class="text-gray-500 font-mono text-sm">Mar 2026 — Present</span>
+                            <span class="text-gray-400 font-mono text-xs px-3 py-1 bg-white/5 rounded-full border border-white/10 self-start">March 2026 — July 2026</span>
                         </div>
-                        <p class="text-gray-400 leading-relaxed">
-                            Curricular Internship as a FQA Tester where I worked in multiple projects gaining a wide
-                            variety of experience.
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Curricular Internship as an FQA Tester across multiple project titles, executing test suites, reporting bugs, and ensuring build stability.
                         </p>
                     </div>
                 </div>
 
-                <!-- Experience Item 2 -->
-                <div class="relative pl-8 border-l-2 border-secondary/30 group">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-secondary rounded-full group-hover:bg-secondary transition-colors">
-                    </div>
-                    <div
-                        class="bg-surface/30 p-8 rounded-2xl border border-white/5 hover:border-secondary/20 transition-all">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                <!-- Item 2 -->
+                <div class="relative pl-8 border-l-2 border-secondary/40 group">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-secondary rounded-full group-hover:bg-secondary transition-colors"></div>
+                    <div class="bg-surface p-8 rounded-2xl border border-white/5 hover:border-secondary/30 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold">Universidade Lusófona</h3>
-                                <p class="text-secondary font-mono text-sm tracking-widest uppercase">Bachelor's Degree
-                                    in
-                                    Videogames and Multimedia Applications</p>
+                                <h3 class="text-2xl font-bold text-white">Universidade Lusófona</h3>
+                                <p class="text-secondary font-mono text-xs tracking-widest uppercase mt-1">Bachelor's Degree in Videogames & Multimedia Applications</p>
                             </div>
-                            <span class="text-gray-500 font-mono text-sm">Sept 2023 — Present</span>
+                            <span class="text-gray-400 font-mono text-xs px-3 py-1 bg-white/5 rounded-full border border-white/10 self-start">Sept 2023 — July 2026</span>
                         </div>
-                        <p class="text-gray-400 leading-relaxed">
-                            Studied in various different areas of videogames. I was introduced to the world of game
-                            development and learned a bit about everything. Art, Programming, Game Design, Sound Design,
-                            Marketing and much more.
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Comprehensive game development degree covering Game Design, Programming, 3D Art, Sound Design, and Marketing.
                         </p>
                     </div>
                 </div>
 
-                <!-- Experience Item 3 -->
-                <div class="relative pl-8 border-l-2 border-accent/30 group">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-accent rounded-full group-hover:bg-accent transition-colors">
-                    </div>
-                    <div
-                        class="bg-surface/30 p-8 rounded-2xl border border-white/5 hover:border-accent/20 transition-all">
+                <!-- Item 3 -->
+                <div class="relative pl-8 border-l-2 border-accent/40 group">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-void border-2 border-accent rounded-full group-hover:bg-accent transition-colors"></div>
+                    <div class="bg-surface p-8 rounded-2xl border border-white/5 hover:border-accent/30 transition-all">
                         <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold">Freelance Roblox VFX Artist</h3>
-                                <p class="text-accent font-mono text-sm tracking-widest uppercase">Freelance</p>
+                                <h3 class="text-2xl font-bold text-white">Freelance Roblox VFX Artist</h3>
+                                <p class="text-accent font-mono text-xs tracking-widest uppercase mt-1">Freelance</p>
                             </div>
-                            <span class="text-gray-500 font-mono text-sm">2022 — Present</span>
+                            <span class="text-gray-400 font-mono text-xs px-3 py-1 bg-white/5 rounded-full border border-white/10 self-start">2022 — Present</span>
                         </div>
-                        <p class="text-gray-400 leading-relaxed">
-                            Creating visual effects for Roblox games. Started as a hobby and evolved into a passion.
+                        <p class="text-gray-400 leading-relaxed text-sm">
+                            Designing custom particle effects, energy spells, and environmental visual effects for various Roblox experiences and developers.
                         </p>
                     </div>
                 </div>
@@ -355,36 +286,21 @@
     <section id="about" class="py-32 bg-surface relative overflow-hidden border-t border-white/5">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-                <!-- Image Container (Left) -->
                 <div class="relative w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full animate-pulse blur-2xl opacity-20">
-                    </div>
-                    <div
-                        class="relative w-full h-full rounded-full border-2 border-white/10 overflow-hidden glass-panel p-2 shadow-2xl">
-                        <img src="assets/Eu.jpg" alt="David Sousa"
-                            class="w-full h-full object-cover rounded-full transition-all duration-700 scale-105"
-                            loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full animate-pulse blur-2xl opacity-20"></div>
+                    <div class="relative w-full h-full rounded-full border-2 border-white/10 overflow-hidden glass-panel p-2 shadow-2xl">
+                        <img src="assets/Eu.jpg" alt="David Sousa" class="w-full h-full object-cover rounded-full" loading="lazy">
                     </div>
                 </div>
 
-                <!-- Text Content (Right) -->
                 <div class="flex-1 text-left">
                     <h2 class="text-4xl md:text-5xl font-bold font-sans mb-6">About Me</h2>
-                    <div class="prose prose-invert prose-lg max-w-2xl text-gray-400">
-                        <p class="leading-relaxed mb-4">
-                            Hello! I'm David, a VFX artist primarily with Roblox Studio, but I also have experience with
-                            Unity and Godot.
+                    <div class="prose prose-invert prose-lg max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed space-y-4">
+                        <p>
+                            Hello! I'm David, a VFX and Technical Artist specializing in real-time particle systems, shaders, and gameplay interactions. I have spent the last few years Primarily focusing on Roblox Studio and am now starting to transition into other Engines such as Unreal.
                         </p>
-                        <p class="leading-relaxed">
-                            My journey in game development is driven by a curiosity for how things work behind the
-                            scenes
-                            and a passion for creating immersive experiences and appealing visual storytelling. Whether
-                            it's in Roblox, Unity, or any other engine,
-                            I strive to deliver high-quality visuals that don't compromise on performance. I'm
-                            always eager to learn new technologies and take on challenging projects that push
-                            the
-                            boundaries of what's possible in real-time rendering.
+                        <p>
+                            My goal in game development is creating impactful visual feedback and immersive effects without compromising rendering performance. Always eager to explore new opportunities where I can learn and try out new things.
                         </p>
                     </div>
                 </div>
@@ -392,140 +308,117 @@
         </div>
     </section>
 
-    <!-- Project Detail Modal -->
+    <!-- Project Detail Modal with Technical Spec Sheet -->
     <div id="project-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+        <div class="absolute inset-0 bg-black/85 backdrop-blur-md" id="modal-backdrop"></div>
 
-        <!-- Modal Content -->
         <div class="absolute inset-0 overflow-y-auto overflow-x-hidden">
             <div class="min-h-full flex items-center justify-center p-2 md:p-8">
-                <div class="relative w-full max-w-4xl bg-surface border border-white/10 rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 overflow-hidden"
-                    id="modal-content">
+                <div class="relative w-full max-w-5xl bg-surface border border-white/15 rounded-3xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 overflow-hidden" id="modal-content">
 
                     <!-- Close Button -->
-                    <button id="modal-close"
-                        class="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-white text-white hover:text-black rounded-full transition-colors">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button id="modal-close" class="absolute top-4 right-4 z-20 p-2 bg-black/60 hover:bg-white text-white hover:text-black rounded-full transition-colors backdrop-blur-md border border-white/10">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="18" y1="6" x2="6" y2="18"></line>
                             <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                     </button>
 
-                    <!-- Modal Body -->
-                    <!-- Modal Body -->
                     <div class="flex flex-col">
                         <!-- Media Carousel -->
-                        <div class="relative w-full aspect-[4/3] md:aspect-video bg-black overflow-hidden rounded-t-2xl cursor-zoom-in group"
-                            id="modal-image-container">
-                            <!-- Helper: Gradient background always there as fallback/base -->
+                        <div class="relative w-full aspect-[16/9] bg-black overflow-hidden rounded-t-3xl group" id="modal-image-container">
                             <div class="absolute inset-0 bg-surface-highlight"></div>
 
-                            <!-- Dynamic Content Container (Clickable for fullscreen) -->
-                            <div id="modal-visual"
-                                class="absolute inset-0 flex items-center justify-center transition-all duration-500">
-                                <!-- Content injected here -->
-                            </div>
-
-                            <!-- Click Hint -->
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                                <span
-                                    class="px-4 py-2 bg-black/60 backdrop-blur-md rounded-full text-white text-xs font-bold uppercase tracking-widest border border-white/10">Click
-                                    to Enlarge</span>
+                            <div id="modal-visual" class="absolute inset-0 flex items-center justify-center">
+                                <!-- Dynamic Media Injected Here -->
                             </div>
 
                             <!-- Carousel Controls -->
-                            <button id="carousel-prev"
-                                class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20">
-                                <svg width="20" height="20" class="md:w-6 md:h-6" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M15 18l-6-6 6-6" />
-                                </svg>
+                            <button id="carousel-prev" class="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 hover:bg-primary text-white hover:text-void rounded-full transition-all backdrop-blur-sm z-20 border border-white/10">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
                             </button>
-                            <button id="carousel-next"
-                                class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 p-2 md:p-3 bg-black/50 hover:bg-primary/80 text-white rounded-full transition-all opacity-0 group-hover:opacity-100 backdrop-blur-sm z-20">
-                                <svg width="20" height="20" class="md:w-6 md:h-6" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M9 18l6-6-6-6" />
-                                </svg>
+                            <button id="carousel-next" class="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/60 hover:bg-primary text-white hover:text-void rounded-full transition-all backdrop-blur-sm z-20 border border-white/10">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                             </button>
 
-                            <!-- Slide Counter/Dots -->
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="carousel-dots">
-                                <!-- Dots injected here -->
-                            </div>
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20" id="carousel-dots"></div>
                         </div>
 
                         <!-- Gallery Thumbnails Preview -->
-                        <div id="modal-gallery-preview"
-                            class="flex gap-2 px-8 py-4 bg-black/40 border-b border-white/5 overflow-x-auto scrollbar-hide">
-                            <!-- Thumbnails injected here -->
-                        </div>
+                        <div id="modal-gallery-preview" class="flex gap-3 px-8 py-4 bg-black/50 border-b border-white/10 overflow-x-auto scrollbar-hide"></div>
 
-                        <!-- Info Section -->
-                        <div class="w-full p-6 md:p-10 bg-surface">
-                            <div
-                                class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6 mb-6 md:mb-8">
+                        <!-- Technical Spec Sheet Body -->
+                        <div class="p-6 md:p-10 bg-surface">
+                            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 mb-8 border-b border-white/10">
                                 <div>
-                                    <span id="modal-tags"
-                                        class="text-primary font-mono text-[10px] md:text-xs uppercase tracking-wider mb-1 md:mb-2 block"></span>
-                                    <h3 id="modal-title" class="text-2xl md:text-5xl font-bold text-white font-sans">
-                                    </h3>
+                                    <span id="modal-tags" class="text-primary font-mono text-xs uppercase tracking-widest mb-2 block"></span>
+                                    <h3 id="modal-title" class="text-3xl md:text-4xl font-bold text-white font-sans"></h3>
                                 </div>
-                                <!-- Optional: External Links could go here -->
+                                <div id="modal-actions" class="flex items-center gap-3"></div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
-                                <div
-                                    class="md:col-span-2 prose prose-invert prose-xs md:prose-lg max-w-none text-gray-300">
-                                    <p id="modal-description" class="leading-relaxed text-sm md:text-base"></p>
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+                                <!-- Left Column: Overview Description -->
+                                <div class="lg:col-span-2 space-y-6">
+                                    <div>
+                                        <h4 class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Project Overview</h4>
+                                        <p id="modal-description" class="text-gray-300 leading-relaxed text-sm md:text-base"></p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-3">Technical Highlights & Contributions</h4>
+                                        <ul id="modal-features" class="space-y-3 font-mono"></ul>
+                                    </div>
                                 </div>
 
-                                <div
-                                    class="md:col-span-1 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-8">
-                                    <h4
-                                        class="text-white font-bold mb-3 md:mb-4 text-xs md:text-sm uppercase tracking-wide">
-                                        Key Features
-                                    </h4>
-                                    <ul id="modal-features"
-                                        class="space-y-2 md:space-y-3 font-mono text-[10px] md:text-sm text-gray-400">
-                                        <!-- Features injected here -->
-                                    </ul>
+                                <!-- Right Column: Technical Spec Sidebar -->
+                                <div class="lg:col-span-1 bg-void/60 p-6 rounded-2xl border border-white/10 space-y-6">
+                                    <h4 class="text-xs font-mono uppercase tracking-widest text-primary border-b border-white/10 pb-2">Technical Spec Sheet</h4>
+
+                                    <div>
+                                        <span class="text-[11px] font-mono text-gray-500 uppercase block mb-1">Engine & Pipeline</span>
+                                        <span id="modal-engine" class="text-sm font-semibold text-white font-mono"></span>
+                                    </div>
+
+                                    <div>
+                                        <span class="text-[11px] font-mono text-gray-500 uppercase block mb-1">Primary Role</span>
+                                        <span id="modal-role" class="text-sm font-semibold text-white font-mono"></span>
+                                    </div>
+
+                                    <div>
+                                        <span class="text-[11px] font-mono text-gray-500 uppercase block mb-2">Software & Tools</span>
+                                        <div id="modal-tools" class="flex flex-wrap gap-1.5"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- About / Contact -->
+    <!-- Contact Section -->
     <section id="contact" class="py-32 bg-void text-center relative overflow-hidden border-t border-white/5">
-        <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-void to-transparent opacity-50">
-        </div>
-
         <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-8">Ready to Work?</h2>
-            <p class="text-xl text-gray-400 max-w-xl mx-auto mb-12">I am currently freelancing, but I am always open to
-                new opportunities in game
-                development. Feel free to reach out!</p>
+            <h2 class="text-4xl md:text-6xl font-bold font-sans mb-6">Let's Connect</h2>
+            <p class="text-gray-400 max-w-lg mx-auto mb-10 text-sm md:text-base leading-relaxed">
+                Open to freelance VFX requests, technical art inquiries, and game development opportunities.
+            </p>
 
             <a href="mailto:davidsousa5jv@gmail.com"
-                class="inline-flex items-center gap-3 px-10 py-5 bg-primary text-void font-bold rounded-full hover:bg-white transition-colors text-lg">
+                class="inline-flex items-center gap-3 px-10 py-4 bg-primary text-void font-bold rounded-full hover:bg-white transition-all text-base uppercase tracking-wider shadow-lg shadow-primary/20">
                 <span>Say Hello</span>
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
             </a>
 
-            <div class="mt-20 flex justify-center gap-8 text-white">
+            <div class="mt-16 flex justify-center gap-8 text-white">
                 <a href="https://linkedin.com/in/david-sousa-698183339" target="_blank" rel="noopener noreferrer"
                     class="hover:text-primary transition-all hover:scale-110" aria-label="LinkedIn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                         <rect x="2" y="9" width="4" height="12"></rect>
                         <circle cx="4" cy="4" r="2"></circle>
@@ -533,29 +426,23 @@
                 </a>
                 <a href="https://github.com/DavidSousa01" target="_blank" rel="noopener noreferrer"
                     class="hover:text-primary transition-all hover:scale-110" aria-label="GitHub">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                     </svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Fullscreen Media Viewer -->
+    <!-- Fullscreen Viewer -->
     <div id="fullscreen-viewer" class="fixed inset-0 z-[200] hidden bg-black flex items-center justify-center p-4">
-        <button id="fullscreen-close"
-            class="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-all z-50">
+        <button id="fullscreen-close" class="absolute top-6 right-6 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-md transition-all z-50">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
-        <div id="fullscreen-content" class="w-full h-full flex items-center justify-center">
-            <!-- Fullscreen content injected here -->
-        </div>
+        <div id="fullscreen-content" class="w-full h-full flex items-center justify-center"></div>
     </div>
 
     <script type="module" src="./main.js"></script>

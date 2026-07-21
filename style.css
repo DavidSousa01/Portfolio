@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,15 +6,10 @@
 
 @layer base {
     body {
-        @apply bg-void text-gray-200 font-body antialiased;
+        @apply bg-void text-gray-200 font-body antialiased selection:bg-primary selection:text-void;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1, h2, h3, h4, h5, h6 {
         @apply font-sans;
     }
 }
@@ -24,18 +19,36 @@
         text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
     }
 
+    .text-glow-accent {
+        text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+    }
+
     .glass-panel {
-        @apply bg-surface/80 backdrop-blur-md border border-white/5;
+        @apply bg-surface/80 backdrop-blur-md border border-white/5 shadow-2xl;
+    }
+
+    .glass-card {
+        @apply bg-surface/50 backdrop-blur-md border border-white/10 hover:border-primary/40 transition-all duration-300;
     }
 
     .scrollbar-hide {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     .scrollbar-hide::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
+        display: none;
     }
+
+    .gpu-layer {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+    }
+}
+
+/* Filter Button Active & Hover State */
+.filter-btn {
+    @apply transition-all duration-300 font-mono text-xs uppercase tracking-wider px-4 py-2 rounded-full border cursor-pointer select-none;
 }
 
 /* Custom Scrollbar */
@@ -53,5 +66,5 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #333;
+    background: #00d4ff;
 }

@@ -1,25 +1,24 @@
 import './style.css';
-import * as THREE from 'three';
 
-// Tailwind Safelist (Ensures these classes are included in the bundle even if only used dynamically):
-// bg-primary bg-secondary bg-accent
-
-
-// Project Data
+// Project Data with Technical Spec Sheets
 const projects = [
     {
         id: 1,
-        title: "🎵InTempo🎵",
-        tags: "Unity",
+        title: "InTempo",
+        category: "unity-unreal",
+        tags: "Unity 2D // VFX & Physics",
+        engine: "Unity 2D (URP)",
+        role: "Gameplay Physics & VFX Developer",
+        tools: ["Unity URP", "C#", "Shader Graph", "Photoshop"],
         thumbnail: "assets/Intempo Logo.png",
         colorClass: "text-primary",
         bgClass: "bg-primary/10",
-        shortDesc: "Game made for a University Project. A 2D Platformer with a rhytmatic world system.",
-        longDesc: "This game was made for a class in University. It is a 2D Platformer where the world moves to the beat of the music. It was a fun project made by a small group that allowed me to experiment with different game mechanics and features. I was personally in charge of making the basic physics of the character such as wall jumping, wall sliding, double jumping, dashing etc... I also helped with level design, building and applying VFX for the entire game.",
+        shortDesc: "Rhythmic 2D platformer built in Unity where the world mechanics pulse to the music beat.",
+        longDesc: "Developed for a university project, InTempo is a 2D rhythm platformer where environmental obstacles and movement mechanics synchronize with audio tracks. I programmed custom character physics (wall-jumping, dashing, double-jumping) and created visual feedback effects for rhythmic world events.",
         features: [
-            "Programming player physics and mechanics",
-            "VFX for player actions and world events",
-            "Level designing and building"
+            "Programmed custom responsive 2D player physics",
+            "Created rhythmic environment & player action VFX",
+            "Designed and assembled rhythmic puzzle levels"
         ],
         visualColor: "bg-primary/10",
         gallery: [
@@ -32,15 +31,20 @@ const projects = [
     {
         id: 2,
         title: "Saved State",
-        tags: "Unreal Engine",
+        category: "unity-unreal",
+        tags: "Unreal Engine // UI & Systems",
+        engine: "Unreal Engine 5",
+        role: "UI & Game Systems Developer",
+        tools: ["Unreal Engine 5", "Blueprints", "UMG UI", "Photoshop"],
         thumbnail: "assets/SaveState Logo.png",
         colorClass: "text-primary",
         bgClass: "bg-primary/10",
-        shortDesc: "Game made for a University Project. A Puzzle Comfort game where you are the owner of a repair shop.",
-        longDesc: "This game was made for a class in University. First time trying out Unreal Engine and its Blueprints system. Personally I was in charge of programming UI and planning the game systems.",
+        shortDesc: "Cozy puzzle repair-shop game developed in Unreal Engine 5 using Blueprints.",
+        longDesc: "Created during university as a first venture into Unreal Engine. Saved State puts players in the shoes of a tech repair shop owner. I focused on architecting the core interaction systems, UI menus, and object diagnostics workflow using UE5 Blueprints and UMG.",
         features: [
-            "Programming UI",
-            "Planning game systems"
+            "Architected complete UMG user interface logic",
+            "Implemented object diagnostic & repair workflows",
+            "Structured modular interaction systems in Blueprints"
         ],
         visualColor: "bg-primary/10",
         gallery: [
@@ -53,17 +57,21 @@ const projects = [
     {
         id: 3,
         title: "Nocturne Battlegrounds",
-        tags: "Roblox",
+        category: "roblox",
+        tags: "Roblox // Combat & Ability VFX",
+        engine: "Roblox Studio",
+        role: "Lead VFX & Ability Designer",
+        tools: ["Roblox Studio", "Luau", "ParticleEmitter", "Beams & Trails", "Blender"],
         thumbnail: "assets/NocturneBattlegroundsLogo.png",
         colorClass: "text-accent",
         bgClass: "bg-accent/10",
-        shortDesc: "A Battlegrounds Free-for-all game where you play as vampires with different abilities.",
-        longDesc: "Nocturne Battlegrounds is a 3D combat experience developed in Roblox. Players enter a free-for-all arena as different types of vampires, managing supernatural abilities to unleash devastating attacks. The project emphasized fast-paced movement, hitbox precision, and accurate and appealing visual feedback through custom ParticleEmitters and beams.",
+        shortDesc: "Fast-paced 3D vampire battlegrounds game featuring high-impact combat ability visual effects.",
+        longDesc: "Nocturne Battlegrounds is a supernatural 3D free-for-all arena game. Players wield vampire abilities requiring crisp hitboxes and instant visual feedback. I designed and implemented combat abilities using custom Roblox ParticleEmitters, beams, trails, and custom camera feedback.",
         features: [
-            "Vampire-themed Ability System",
-            "High-intensity Free-for-all Combat",
-            "Custom Roblox VFX and Shaders",
-            "Sleek Gothic UI Design"
+            "Vampire-themed ability visual effects system",
+            "Frame-accurate impact feedback and hitboxes",
+            "Custom particle systems, beams, and dynamic lighting",
+            "Stylized gothic UI and visual hierarchy"
         ],
         visualColor: "bg-accent/10",
         gallery: [
@@ -74,20 +82,26 @@ const projects = [
     },
     {
         id: 4,
-        title: "Roblox VFX",
-        tags: "Roblox",
+        title: "Roblox VFX Showcase",
+        category: "vfx",
+        tags: "Roblox // Real-time VFX",
+        engine: "Roblox Studio / Shaders",
+        role: "VFX & Technical Artist",
+        tools: ["Roblox Studio", "ParticleEmitter", "Beams", "Blender", "After Effects"],
         thumbnail: "assets/RobloxLogo.jpg",
         colorClass: "text-accent",
         bgClass: "bg-accent/10",
-        shortDesc: "Personal projects I either made for fun and experimenting.",
-        longDesc: "A collection of personal VFX projects and experiments created in Roblox Studio. These include various particle systems, beams, trails and environmental effects.",
+        shortDesc: "Personal laboratory of advanced real-time VFX experiments, elemental spells, and shader work.",
+        longDesc: "A dedicated collection of real-time particle and shader experiments created in Roblox Studio. Projects include environmental atmospheric fog, elemental energy bursts (Rasengan, Solar Flare), explosion shocks, and stylized magic trails.",
         features: [
-            "Advanced Particle Systems",
-            "Custom Shader Development",
-            "Environmental VFX Experiments"
+            "Advanced particle systems & custom texture sheets",
+            "Real-time energy and elemental spell effects",
+            "Environmental atmospheric fog and volumetric lighting",
+            "Custom mesh distortion and trail behaviors"
         ],
         visualColor: "bg-accent/10",
         gallery: [
+            { type: 'video', content: 'assets/Sewer.mp4' },
             { type: 'video', content: 'assets/Rasengan.mp4' },
             { type: 'video', content: 'assets/BOOM.mp4' },
             { type: 'video', content: 'assets/SunBurn.mp4' }
@@ -99,19 +113,23 @@ const projects = [
 // Game Jams Data
 const gameJams = [
     {
+        id: 5,
         title: "Bubble Trouble",
+        category: "jams",
+        tags: "Godot // Global Game Jam 2025",
+        engine: "Godot Engine 4",
+        role: "SFX & VFX Designer",
+        tools: ["Godot Engine", "GDScript", "8-Bit Audio", "Photoshop"],
         event: "Global Game Jam 2025",
-        role: "SFX / VFX",
         thumbnail: "assets/BubbleTroubleGame.png",
-        desc: "A pixelated classic Arcade Beat 'Em Up with a unique bubble-based combat system.",
-        longDesc: "Built in 48 hours for the Global Game Jam, Bubble Trouble is a 2D Beat 'Em Up game where players fight off enemies using bubbles. This was my first time trying Sound Design with no prior experience. I do have a small background in music so creating an 8bit track and effects for actions was quite entertaining.",
+        shortDesc: "Arcade Beat 'Em Up featuring a bubble combat mechanic, built in 48 hours for GGJ 2025.",
+        longDesc: "Built in 48 hours for the Global Game Jam 2025, Bubble Trouble is a 2D pixel arcade Beat 'Em Up. I handled Sound Design and created complementary retro visual effects to enhance combat feedback and impact feel.",
         features: [
-            "8bit Arcade Soundtrack",
-            "Complenting VFX for visual feedback"
+            "Custom 8-bit arcade soundtrack & impact SFX",
+            "Pixel-art combat visual effects",
+            "48-hour rapid game jam workflow"
         ],
-        tags: ["GODOT", "GDScript"],
-        modalTags: "GODOT / GDScript",
-        color: "text-primary",
+        colorClass: "text-primary",
         bgClass: "bg-primary/10",
         visualColor: "bg-primary/20",
         gallery: [
@@ -120,21 +138,23 @@ const gameJams = [
         link: "#"
     },
     {
+        id: 6,
         title: "Esc.",
-        event: "Mad game Jam 2026",
-        role: "VFX/Programmer/SFX",
+        category: "jams",
+        tags: "Godot // Mad Game Jam 2026",
+        engine: "Godot Engine 4",
+        role: "VFX / Programmer / SFX",
+        tools: ["Godot Engine", "GDScript", "Pattern Recognition", "Sound Design"],
+        event: "Mad Game Jam 2026",
         thumbnail: "assets/EscGame.png",
-        desc: "Arcade fast-paced, reflex-based game",
-        longDesc: "Built in 48 hours for the Mad Game Jam 2026, Esc is a arcade-ish, fast-paced, reflex-based game. The theme of the GameJam was was Escape hence the name Esc. It is a 2D game where you must draw sigils and defend yourself from enemies trying to get you as you go through different levels. Personally I was incharge of making the code for the Pattern Recognition, the visual effects, animation implementation and Sound Design.",
+        shortDesc: "Reflex-based arcade game where players draw sigils to escape pursuing enemies.",
+        longDesc: "Developed in 48 hours for Mad Game Jam 2026 under the theme 'Escape'. Esc is a fast-paced reflex arcade game where players draw magical sigils to repel enemy waves. I programmed the gesture/pattern recognition code, designed spell VFX, and authored audio assets.",
         features: [
-            "Pattern Recognition",
-            "Visual Effects",
-            "Animation Implementation",
-            "Sound Design"
+            "Custom gesture & pattern recognition algorithm",
+            "Magical sigil drawing particle effects",
+            "Animation integration and audio design"
         ],
-        tags: ["GODOT", "GDScript"],
-        modalTags: "GODOT / GDScript",
-        color: "text-accent",
+        colorClass: "text-accent",
         bgClass: "bg-accent/10",
         visualColor: "bg-accent/20",
         gallery: [
@@ -146,9 +166,11 @@ const gameJams = [
     }
 ];
 
+// All portfolio items combined for filtering
+const allPortfolioItems = [...projects, ...gameJams];
+
 // DOM Elements
 const projectsContainer = document.getElementById('projects-container');
-const jamsContainer = document.getElementById('jams-container');
 const modal = document.getElementById('project-modal');
 const modalBackdrop = document.getElementById('modal-backdrop');
 const modalContent = document.getElementById('modal-content');
@@ -173,107 +195,134 @@ const fullscreenViewer = document.getElementById('fullscreen-viewer');
 const fullscreenContent = document.getElementById('fullscreen-content');
 const fullscreenClose = document.getElementById('fullscreen-close');
 
+// Active filter state
+let currentFilter = 'all';
 let currentProject = null;
 let currentSlideIndex = 0;
 
-// Render Projects
-function renderProjects() {
-    if (projectsContainer) {
-        projectsContainer.innerHTML = '';
-        projects.forEach(project => {
-            const article = document.createElement('article');
-            article.className = 'group relative aspect-video bg-surface rounded-2xl overflow-hidden cursor-pointer';
-            article.innerHTML = `
-                <div class="absolute inset-0 bg-gradient-to-br from-surface-highlight to-black"></div>
-                <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-100 transition-opacity duration-700">
-                   ${project.thumbnail
-                    ? `<img src="${project.thumbnail}" class="w-full h-full object-contain opacity-60 transition-transform duration-700 group-hover:scale-105" alt="${project.title}" loading="lazy">`
-                    : `<div class="w-3/4 h-3/4 ${project.visualColor} rounded-full blur-3xl"></div>`
-                }
-                </div>
-                <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent opacity-100 md:opacity-90 transition-all duration-300">
-                  <div class="transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="${project.colorClass} font-mono text-[10px] md:text-xs uppercase tracking-wider mb-2 block">${project.tags}</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">${project.title}</h3>
-                    <p class="text-gray-400 text-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75 line-clamp-2 md:line-clamp-none">
-                      ${project.shortDesc}
-                    </p>
-                  </div>
-                </div>
-            `;
-            article.addEventListener('click', () => openModal(project));
-            projectsContainer.appendChild(article);
-        });
+// Render Projects Grid with Filter Support
+function renderProjects(filterCategory = 'all') {
+    if (!projectsContainer) return;
+    
+    currentFilter = filterCategory;
+    projectsContainer.innerHTML = '';
+
+    const filteredItems = filterCategory === 'all'
+        ? allPortfolioItems
+        : allPortfolioItems.filter(item => item.category === filterCategory);
+
+    if (filteredItems.length === 0) {
+        projectsContainer.innerHTML = `
+            <div class="col-span-full py-16 text-center text-gray-500 font-mono text-sm">
+                No projects found in this category.
+            </div>
+        `;
+        return;
     }
 
-    if (jamsContainer) {
-        jamsContainer.innerHTML = '';
-        gameJams.forEach(jam => {
-            const article = document.createElement('article');
-            article.className = 'group relative aspect-video bg-surface rounded-2xl overflow-hidden cursor-pointer';
-            article.innerHTML = `
-                <div class="absolute inset-0 bg-gradient-to-br from-surface-highlight to-black"></div>
-                <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-100 transition-opacity duration-700">
-                   ${jam.thumbnail
-                    ? `<img src="${jam.thumbnail}" class="w-full h-full object-contain opacity-60 transition-transform duration-700 group-hover:scale-105" alt="${jam.title}" loading="lazy">`
-                    : `<div class="w-3/4 h-3/4 ${jam.visualColor} rounded-full blur-3xl"></div>`
-                }
+    filteredItems.forEach(item => {
+        const article = document.createElement('article');
+        article.className = 'group relative aspect-video bg-surface rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-primary/40 transition-all duration-500 shadow-xl';
+        article.innerHTML = `
+            <div class="absolute inset-0 bg-gradient-to-br from-surface-highlight to-black"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+               ${item.thumbnail
+                ? `<img src="${item.thumbnail}" class="w-full h-full object-contain p-4 opacity-70 transition-transform duration-700 group-hover:scale-105" alt="${item.title}" loading="lazy">`
+                : `<div class="w-3/4 h-3/4 ${item.visualColor} rounded-full blur-3xl"></div>`
+            }
+            </div>
+            <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent opacity-100 transition-all duration-300">
+              <div class="transform translate-y-0 transition-transform duration-300">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="${item.colorClass || 'text-primary'} font-mono text-[10px] md:text-xs uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10">
+                        ${item.tags}
+                    </span>
                 </div>
-                <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black via-black/80 to-transparent opacity-100 md:opacity-90 transition-all duration-300">
-                  <div class="transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-transform duration-300">
-                    <span class="${jam.color} font-mono text-[10px] md:text-xs uppercase tracking-wider mb-2 block">${jam.event}</span>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight">${jam.title}</h3>
-                    <p class="text-gray-400 text-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 delay-75 line-clamp-2 md:line-clamp-none">
-                      ${jam.desc}
-                    </p>
-                  </div>
+                <h3 class="text-2xl md:text-3xl font-bold mb-2 text-white leading-tight font-sans group-hover:text-primary transition-colors">${item.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed">
+                  ${item.shortDesc}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    ${(item.tools || []).slice(0, 3).map(t => `<span class="text-[10px] font-mono text-gray-400 bg-void/80 px-2 py-0.5 rounded border border-white/10">${t}</span>`).join('')}
                 </div>
-            `;
-            article.addEventListener('click', () => openModal({
-                ...jam,
-                colorClass: jam.color
-            }));
-            jamsContainer.appendChild(article);
-        });
-    }
+              </div>
+            </div>
+        `;
+        article.addEventListener('click', () => openModal(item));
+        projectsContainer.appendChild(article);
+    });
 
     observeElements();
 }
 
-// Modal Logic
+// Category Filter Event Listeners
+function initFilterTabs() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => {
+                b.classList.remove('bg-primary', 'text-void', 'border-primary');
+                b.classList.add('bg-void', 'text-gray-400', 'border-white/10');
+            });
+            btn.classList.remove('bg-void', 'text-gray-400', 'border-white/10');
+            btn.classList.add('bg-primary', 'text-void', 'border-primary');
+
+            const category = btn.getAttribute('data-filter');
+            renderProjects(category);
+        });
+    });
+}
+
+// Modal Logic with Technical Spec Sheet Render
 function openModal(project) {
     currentProject = project;
     currentSlideIndex = 0;
 
+    // Header Details
     document.getElementById('modal-title').textContent = project.title;
-    document.getElementById('modal-tags').textContent = project.modalTags || project.tags;
-    document.getElementById('modal-tags').className = `${project.colorClass} font-mono text-xs uppercase tracking-wider mb-3 block`;
+    document.getElementById('modal-tags').textContent = project.tags;
+    document.getElementById('modal-tags').className = `${project.colorClass || 'text-primary'} font-mono text-xs uppercase tracking-wider mb-2 block`;
     document.getElementById('modal-description').textContent = project.longDesc;
 
-    const featuresList = document.getElementById('modal-features');
-    featuresList.innerHTML = project.features.map(feat =>
-        `<li class="flex items-center gap-2"><div class="w-1.5 h-1.5 ${project.bgClass?.replace('/10', '') || 'bg-primary'} rounded-full"></div>${feat}</li>`
-    ).join('');
+    // Tech Spec Sidebar
+    const engineEl = document.getElementById('modal-engine');
+    if (engineEl) engineEl.textContent = project.engine || 'Real-time Engine';
 
-    // Add External Link Button
+    const roleEl = document.getElementById('modal-role');
+    if (roleEl) roleEl.textContent = project.role || 'VFX / Technical Artist';
+
+    const toolsEl = document.getElementById('modal-tools');
+    if (toolsEl) {
+        toolsEl.innerHTML = (project.tools || []).map(t => 
+            `<span class="px-2.5 py-1 bg-white/5 border border-white/10 text-gray-300 rounded text-xs font-mono">${t}</span>`
+        ).join('');
+    }
+
+    // Key Features / Spec Highlights
+    const featuresList = document.getElementById('modal-features');
+    if (featuresList) {
+        featuresList.innerHTML = (project.features || []).map(feat =>
+            `<li class="flex items-start gap-2 text-xs md:text-sm text-gray-300 leading-relaxed"><div class="w-1.5 h-1.5 ${project.colorClass ? project.colorClass.replace('text-', 'bg-') : 'bg-primary'} rounded-full mt-1.5 flex-shrink-0"></div><span>${feat}</span></li>`
+        ).join('');
+    }
+
+    // External Link Button
     const existingLink = document.getElementById('modal-external-link');
     if (existingLink) existingLink.remove();
 
-    if (project.link) {
+    if (project.link && project.link !== '#') {
         const linkBtn = document.createElement('a');
         linkBtn.id = 'modal-external-link';
         linkBtn.href = project.link;
         linkBtn.target = '_blank';
         linkBtn.rel = 'noopener noreferrer';
-        linkBtn.className = 'inline-flex items-center gap-1.5 text-primary hover:text-white transition-colors text-sm font-bold mt-4 md:mt-0 group/link';
+        linkBtn.className = 'inline-flex items-center gap-2 px-4 py-2 bg-primary text-void rounded-full font-bold text-xs hover:bg-white transition-all';
         linkBtn.innerHTML = `
-            <span class="border-b border-primary/30 group-hover/link:border-white transition-colors">View Project</span>
+            <span>Play / View Project</span>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         `;
-        // Find existing parent of title to append button or insert after info
-        const titleWrapper = document.getElementById('modal-title').closest('.flex-col');
-        if (titleWrapper && titleWrapper.parentElement) {
-            titleWrapper.parentElement.appendChild(linkBtn);
-        }
+        const actionContainer = document.getElementById('modal-actions');
+        if (actionContainer) actionContainer.appendChild(linkBtn);
     }
 
     updateCarousel();
@@ -301,15 +350,15 @@ function updateCarousel() {
     if (slide.type === 'color') {
         contentDiv.innerHTML = `<div class="w-3/4 h-3/4 ${slide.content} rounded-full blur-3xl"></div>`;
     } else if (slide.type === 'image') {
-        contentDiv.innerHTML = `<img src="${slide.content}" class="w-full h-full object-contain" alt="Project Screenshot">`;
+        contentDiv.innerHTML = `<img src="${slide.content}" class="w-full h-full object-contain" alt="${currentProject.title}">`;
     } else if (slide.type === 'video') {
-        contentDiv.innerHTML = `<video src="${slide.content}" class="w-full h-full object-contain" autoplay loop muted playsinline></video>`;
+        contentDiv.innerHTML = `<video src="${slide.content}" class="w-full h-full object-contain" autoplay loop muted playsinline controls></video>`;
     }
 
     carouselVisual.appendChild(contentDiv);
 
     carouselDots.innerHTML = currentProject.gallery.map((_, idx) => `
-        <button onclick="goToSlide(${idx})" class="w-2 h-2 rounded-full transition-all ${idx === currentSlideIndex ? 'bg-white w-4' : 'bg-white/30 hover:bg-white/60'}"></button>
+        <button onclick="goToSlide(${idx})" class="w-2 h-2 rounded-full transition-all ${idx === currentSlideIndex ? 'bg-primary w-5' : 'bg-white/30 hover:bg-white/60'}"></button>
     `).join('');
 
     if (totalSlides > 1) {
@@ -324,7 +373,7 @@ function updateCarousel() {
         carouselNext.disabled = true;
     }
 
-    // Update Thumbnails Preview
+    // Thumbnails Preview
     if (galleryPreview) {
         galleryPreview.innerHTML = currentProject.gallery.map((item, idx) => {
             const isActive = idx === currentSlideIndex;
@@ -335,10 +384,9 @@ function updateCarousel() {
             } else if (item.type === 'image') {
                 content = `<img src="${item.content}" class="w-full h-full object-cover">`;
             } else if (item.type === 'video') {
-                // For video, we show a simplified preview or icon
                 content = `
                     <div class="w-full h-full bg-black flex items-center justify-center relative">
-                        <svg class="w-6 h-6 text-white/50" fill="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
                     </div>
@@ -372,7 +420,7 @@ function prevSlide() {
 window.goToSlide = function (index) {
     currentSlideIndex = index;
     updateCarousel();
-}
+};
 
 function closeModal() {
     modal.classList.add('opacity-0');
@@ -389,10 +437,8 @@ function closeModal() {
 if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
 if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
 
-// Handle clicking outside the modal content to close
 if (modal) {
     modal.addEventListener('click', (e) => {
-        // If the click is on the modal container itself or the scroll wrapper, but NOT inside the modal-content
         if (modalContent && !modalContent.contains(e.target)) {
             closeModal();
         }
@@ -401,7 +447,7 @@ if (modal) {
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (!fullscreenViewer.classList.contains('hidden')) {
+        if (fullscreenViewer && !fullscreenViewer.classList.contains('hidden')) {
             closeFullscreen();
         } else {
             closeModal();
@@ -423,7 +469,7 @@ if (carouselPrev) carouselPrev.addEventListener('click', (e) => {
     prevSlide();
 });
 
-// Fullscreen Logic
+// Fullscreen Viewer Logic
 function openFullscreen() {
     if (!currentProject || !currentProject.gallery) return;
     const slide = currentProject.gallery[currentSlideIndex];
@@ -442,7 +488,7 @@ function openFullscreen() {
         video.autoplay = true;
         fullscreenContent.appendChild(video);
     } else {
-        return; // Don't open for colors
+        return;
     }
 
     fullscreenViewer.classList.remove('hidden');
@@ -452,20 +498,13 @@ function openFullscreen() {
 function closeFullscreen() {
     fullscreenViewer.classList.add('hidden');
     fullscreenContent.innerHTML = '';
-    // Only restore scroll if main modal is also closed
     if (modal && modal.classList.contains('hidden')) {
         document.body.style.overflow = '';
     }
 }
 
-if (carouselVisual) {
-    carouselVisual.addEventListener('click', openFullscreen);
-}
-
-if (fullscreenClose) {
-    fullscreenClose.addEventListener('click', closeFullscreen);
-}
-
+if (carouselVisual) carouselVisual.addEventListener('click', openFullscreen);
+if (fullscreenClose) fullscreenClose.addEventListener('click', closeFullscreen);
 if (fullscreenViewer) {
     fullscreenViewer.addEventListener('click', (e) => {
         if (e.target === fullscreenViewer) closeFullscreen();
@@ -486,14 +525,10 @@ function toggleMobileMenu() {
         mobileMenu.classList.add('translate-x-0');
         hamburgerIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
-        // We don't necessarily want to lock background scroll if it's just a side nav
-        // But for consistency with your previous request I'll keep it or let it scroll
     }
 }
 
-if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-}
+if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
 mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -505,6 +540,7 @@ mobileNavLinks.forEach(link => {
     });
 });
 
+// Scroll Navbar Effect
 const navbar = document.getElementById('navbar');
 let lastScrollY = window.scrollY;
 let ticking = false;
@@ -526,6 +562,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// IntersectionObserver Animation Trigger
 const observerOptions = {
     root: null,
     rootMargin: '0px',
@@ -549,8 +586,8 @@ function observeElements() {
     });
 }
 
-// Typewriter Effect
-const phrases = ["VFX Artist", "QA Tester"];
+// Typewriter Effect for Roles
+const phrases = ["VFX Artist", "Technical Artist", "QA Tester"];
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -589,244 +626,97 @@ function type() {
 
     if (!isDeleting && charIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 2000; // Pause at end
+        typeSpeed = 2000;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
-        typeSpeed = 500; // Pause before new word
+        typeSpeed = 500;
     }
 
     setTimeout(type, typeSpeed);
 }
 
-// Hero Light Pillar Effect (Advanced Raymarching Implementation)
-function initLightPillar() {
+// Ultra-Lightweight Ambient 2D Canvas Background (Replaces Heavy WebGL Raymarching Shader)
+function initAmbientParticles() {
     const container = document.getElementById('light-pillar-container');
     if (!container) return;
 
-    // Configuration from provided spec
-    const props = {
-        topColor: '#bdebff',
-        bottomColor: '#22009e',
-        intensity: 0.3,
-        rotationSpeed: 0.1,
-        interactive: false,
-        glowAmount: 0.002,
-        pillarWidth: 5.3,
-        pillarHeight: 0.6,
-        noiseIntensity: 0.5,
-        pillarRotation: 91,
-        mixBlendMode: 'screen',
-        quality: 'high'
-    };
+    const canvas = document.createElement('canvas');
+    canvas.className = 'w-full h-full absolute inset-0 pointer-events-none opacity-40';
+    container.appendChild(canvas);
 
-    // Scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const renderer = new THREE.WebGLRenderer({
-        antialias: false,
-        alpha: true,
-        powerPreference: props.quality === 'high' ? 'high-performance' : 'low-power',
-        stencil: false,
-        depth: false
-    });
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const isLowEndDevice = isMobile || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    let isVisible = true;
 
-    let effectiveQuality = props.quality;
-    if (isLowEndDevice && props.quality === 'high') effectiveQuality = 'medium';
-    if (isMobile && props.quality !== 'low') effectiveQuality = 'low';
+    function resize() {
+        width = canvas.width = container.clientWidth;
+        height = canvas.height = container.clientHeight;
+        createParticles();
+    }
 
-    const qualitySettings = {
-        low: { iterations: 24, waveIterations: 1, pixelRatio: 0.5, precision: 'mediump', stepMultiplier: 1.5 },
-        medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, precision: 'mediump', stepMultiplier: 1.2 },
-        high: {
-            iterations: 80,
-            waveIterations: 4,
-            pixelRatio: Math.min(window.devicePixelRatio, 2),
-            precision: 'highp',
-            stepMultiplier: 1.0
+    function createParticles() {
+        particles = [];
+        const count = Math.min(Math.floor((width * height) / 35000), 30);
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2 + 1,
+                color: Math.random() > 0.5 ? '#00d4ff' : '#ff0055',
+                alpha: Math.random() * 0.4 + 0.1,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: -Math.random() * 0.4 - 0.1
+            });
         }
-    };
+    }
 
-    const settings = qualitySettings[effectiveQuality] || qualitySettings.medium;
+    const heroObserver = new IntersectionObserver((entries) => {
+        isVisible = entries[0].isIntersecting;
+    }, { threshold: 0.05 });
 
-    renderer.setPixelRatio(settings.pixelRatio);
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    renderer.domElement.style.mixBlendMode = props.mixBlendMode;
-    container.appendChild(renderer.domElement);
+    heroObserver.observe(container);
 
-    const parseColor = hex => {
-        const color = new THREE.Color(hex);
-        return new THREE.Vector3(color.r, color.g, color.b);
-    };
+    function animate() {
+        if (isVisible) {
+            ctx.clearRect(0, 0, width, height);
 
-    const vertexShader = `
-        varying vec2 vUv;
-        void main() {
-            vUv = uv;
-            gl_Position = vec4(position, 1.0);
-        }
-    `;
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
 
-    const fragmentShader = `
-        precision ${settings.precision} float;
-
-        uniform float uTime;
-        uniform vec2 uResolution;
-        uniform vec2 uMouse;
-        uniform vec3 uTopColor;
-        uniform vec3 uBottomColor;
-        uniform float uIntensity;
-        uniform bool uInteractive;
-        uniform float uGlowAmount;
-        uniform float uPillarWidth;
-        uniform float uPillarHeight;
-        uniform float uNoiseIntensity;
-        uniform float uRotCos;
-        uniform float uRotSin;
-        uniform float uPillarRotCos;
-        uniform float uPillarRotSin;
-        uniform float uWaveSin;
-        uniform float uWaveCos;
-        varying vec2 vUv;
-
-        const float STEP_MULT = ${settings.stepMultiplier.toFixed(1)};
-        const int MAX_ITER = ${settings.iterations};
-        const int WAVE_ITER = ${settings.waveIterations};
-
-        void main() {
-            vec2 uv = (vUv * 2.0 - 1.0) * vec2(uResolution.x / uResolution.y, 1.0);
-            uv = vec2(uPillarRotCos * uv.x - uPillarRotSin * uv.y, uPillarRotSin * uv.x + uPillarRotCos * uv.y);
-
-            vec3 ro = vec3(0.0, 0.0, -10.0);
-            vec3 rd = normalize(vec3(uv, 1.0));
-
-            float rotC = uRotCos;
-            float rotS = uRotSin;
-            
-            vec3 col = vec3(0.0);
-            float t = 0.1;
-            
-            for(int i = 0; i < MAX_ITER; i++) {
-                vec3 p = ro + rd * t;
-                p.xz = vec2(rotC * p.x - rotS * p.z, rotS * p.x + rotC * p.z);
-
-                vec3 q = p;
-                q.y = p.y * uPillarHeight + uTime;
-                
-                float freq = 1.0;
-                float amp = 1.0;
-                for(int j = 0; j < WAVE_ITER; j++) {
-                    q.xz = vec2(uWaveCos * q.x - uWaveSin * q.z, uWaveSin * q.x + uWaveCos * q.z);
-                    q += cos(q.zxy * freq - uTime * float(j) * 2.0) * amp;
-                    freq *= 2.0;
-                    amp *= 0.5;
+                if (p.y < 0) {
+                    p.y = height + 10;
+                    p.x = Math.random() * width;
                 }
-                
-                float d = length(cos(q.xz)) - 0.2;
-                float bound = length(p.xz) - uPillarWidth;
-                float k = 4.0;
-                float h = max(k - abs(d - bound), 0.0);
-                d = max(d, bound) + h * h * 0.0625 / k;
-                d = abs(d) * 0.15 + 0.01;
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
 
-                float grad = clamp((15.0 - p.y) / 30.0, 0.0, 1.0);
-                col += mix(uBottomColor, uTopColor, grad) / d;
-
-                t += d * STEP_MULT;
-                if(t > 50.0) break;
-            }
-
-            float widthNorm = uPillarWidth / 3.0;
-            col = tanh(col * uGlowAmount / widthNorm);
-            
-            col -= fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) / 15.0 * uNoiseIntensity;
-            
-            gl_FragColor = vec4(col * uIntensity, 1.0);
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+            });
         }
-    `;
-
-    const pillarRotRad = (props.pillarRotation * Math.PI) / 180;
-    const waveSin = Math.sin(0.4);
-    const waveCos = Math.cos(0.4);
-
-    const material = new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms: {
-            uTime: { value: 0 },
-            uResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
-            uMouse: { value: new THREE.Vector2(0, 0) },
-            uTopColor: { value: parseColor(props.topColor) },
-            uBottomColor: { value: parseColor(props.bottomColor) },
-            uIntensity: { value: props.intensity },
-            uInteractive: { value: props.interactive },
-            uGlowAmount: { value: props.glowAmount },
-            uPillarWidth: { value: props.pillarWidth },
-            uPillarHeight: { value: props.pillarHeight },
-            uNoiseIntensity: { value: props.noiseIntensity },
-            uRotCos: { value: 1.0 },
-            uRotSin: { value: 0.0 },
-            uPillarRotCos: { value: Math.cos(pillarRotRad) },
-            uPillarRotSin: { value: Math.sin(pillarRotRad) },
-            uWaveSin: { value: waveSin },
-            uWaveCos: { value: waveCos }
-        },
-        transparent: true,
-        depthWrite: false,
-        depthTest: false
-    });
-
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-
-    function onWindowResize() {
-        if (!container) return;
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-        renderer.setSize(width, height);
-        material.uniforms.uResolution.value.set(width, height);
-    }
-
-    let time = 0;
-    let lastTime = performance.now();
-    const targetFPS = effectiveQuality === 'low' ? 30 : 60;
-    const frameTime = 1000 / targetFPS;
-
-    let isPillarVisible = true;
-    const pillarObserver = new IntersectionObserver((entries) => {
-        isPillarVisible = entries[0].isIntersecting;
-    }, { threshold: 0.1 });
-    pillarObserver.observe(container);
-
-    function animate(currentTime) {
         requestAnimationFrame(animate);
-
-        if (!isPillarVisible) return;
-
-        const deltaTime = currentTime - lastTime;
-        if (deltaTime >= frameTime) {
-            time += 0.016 * props.rotationSpeed;
-            material.uniforms.uTime.value = time;
-            material.uniforms.uRotCos.value = Math.cos(time * 0.3);
-            material.uniforms.uRotSin.value = Math.sin(time * 0.3);
-            renderer.render(scene, camera);
-            lastTime = currentTime - (deltaTime % frameTime);
-        }
     }
 
-    window.addEventListener('resize', onWindowResize, { passive: true });
-    onWindowResize();
-    requestAnimationFrame(animate);
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
 }
 
-// Initial Render
-renderProjects();
-type();
-initLightPillar();
-
-console.log('Portfolio initialized');
+// Initialize on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects('all');
+    initFilterTabs();
+    type();
+    initAmbientParticles();
+});
