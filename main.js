@@ -3,6 +3,36 @@ import './style.css';
 // Project Data with Technical Spec Sheets
 const projects = [
     {
+        id: 7,
+        title: "Pochita Dreams",
+        category: ["roblox", "vfx"],
+        tags: "Roblox // Combat & Ability VFX",
+        engine: "Roblox Studio",
+        role: "VFX Artist",
+        tools: ["Roblox Studio", "ParticleEmitter", "Beams & Trails", "Blender"],
+        thumbnail: "assets/ShinsekaiLogo.png",
+        colorClass: "text-accent",
+        bgClass: "bg-accent/10",
+        shortDesc: "Action-combat Roblox game based on Chainsaw Man featuring custom active skill visual effects.",
+        longDesc: "Pochita Dreams is a Roblox combat experience inspired by the Chainsaw Man Manga/Anime. I developed impactful combat visual effects for active character skills, creating custom particles, slashes, explosive impacts, and more feedback optimized for high-performance multiplayer lobbies.",
+        features: [
+            "Designed and implemented active combat skill VFX",
+            "Created elemental, blood, and slash particle systems",
+            "Optimized gameplay VFX memory footprint for multiplayer stability"
+        ],
+        visualColor: "bg-accent/10",
+        gallery: [
+            { type: 'video', content: 'assets/Shinsekai1.mp4' },
+            { type: 'video', content: 'assets/Shinsekai2.mp4' },
+            { type: 'video', content: 'assets/Shinsekai3.mp4' },
+            { type: 'video', content: 'assets/Shinsekai4.mp4' },
+            { type: 'video', content: 'assets/Shinsekai5.mp4' },
+            { type: 'video', content: 'assets/Shinsekai6.mp4' },
+            { type: 'video', content: 'assets/Shinsekai7.mp4' }
+        ],
+        link: "#"
+    },
+    {
         id: 1,
         title: "InTempo",
         category: "unity-unreal",
@@ -166,7 +196,6 @@ const gameJams = [
     }
 ];
 
-// All portfolio items combined for filtering
 const allPortfolioItems = [...projects, ...gameJams];
 
 // DOM Elements
@@ -195,10 +224,10 @@ const fullscreenViewer = document.getElementById('fullscreen-viewer');
 const fullscreenContent = document.getElementById('fullscreen-content');
 const fullscreenClose = document.getElementById('fullscreen-close');
 
-// Active filter state
 let currentFilter = 'all';
 let currentProject = null;
 let currentSlideIndex = 0;
+let isCanvasPaused = false; // Flag to freeze ambient background rendering during video playback
 
 // Render Projects Grid with Filter Support
 function renderProjects(filterCategory = 'all') {
@@ -209,7 +238,11 @@ function renderProjects(filterCategory = 'all') {
 
     const filteredItems = filterCategory === 'all'
         ? allPortfolioItems
-        : allPortfolioItems.filter(item => item.category === filterCategory);
+        : allPortfolioItems.filter(item => 
+            Array.isArray(item.category) 
+                ? item.category.includes(filterCategory) 
+                : item.category === filterCategory
+        );
 
     if (filteredItems.length === 0) {
         projectsContainer.innerHTML = `
@@ -255,7 +288,6 @@ function renderProjects(filterCategory = 'all') {
     observeElements();
 }
 
-// Category Filter Event Listeners
 function initFilterTabs() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
@@ -273,18 +305,16 @@ function initFilterTabs() {
     });
 }
 
-// Modal Logic with Technical Spec Sheet Render
 function openModal(project) {
     currentProject = project;
     currentSlideIndex = 0;
+    isCanvasPaused = true; // Freeze background canvas animation loop to free 100% GPU for video decoding
 
-    // Header Details
     document.getElementById('modal-title').textContent = project.title;
     document.getElementById('modal-tags').textContent = project.tags;
     document.getElementById('modal-tags').className = `${project.colorClass || 'text-primary'} font-mono text-xs uppercase tracking-wider mb-2 block`;
     document.getElementById('modal-description').textContent = project.longDesc;
 
-    // Tech Spec Sidebar
     const engineEl = document.getElementById('modal-engine');
     if (engineEl) engineEl.textContent = project.engine || 'Real-time Engine';
 
@@ -298,7 +328,6 @@ function openModal(project) {
         ).join('');
     }
 
-    // Key Features / Spec Highlights
     const featuresList = document.getElementById('modal-features');
     if (featuresList) {
         featuresList.innerHTML = (project.features || []).map(feat =>
@@ -306,7 +335,6 @@ function openModal(project) {
         ).join('');
     }
 
-    // External Link Button
     const existingLink = document.getElementById('modal-external-link');
     if (existingLink) existingLink.remove();
 
@@ -344,15 +372,63 @@ function updateCarousel() {
     const totalSlides = currentProject.gallery.length;
 
     carouselVisual.innerHTML = '';
+
     const contentDiv = document.createElement('div');
-    contentDiv.className = 'w-full h-full flex items-center justify-center';
+    contentDiv.className = 'w-full h-full flex items-center justify-center relative';
 
     if (slide.type === 'color') {
         contentDiv.innerHTML = `<div class="w-3/4 h-3/4 ${slide.content} rounded-full blur-3xl"></div>`;
     } else if (slide.type === 'image') {
         contentDiv.innerHTML = `<img src="${slide.content}" class="w-full h-full object-contain" alt="${currentProject.title}">`;
     } else if (slide.type === 'video') {
-        contentDiv.innerHTML = `<video src="${slide.content}" class="w-full h-full object-contain" autoplay loop muted playsinline controls></video>`;
+        // Create Loading Spinner
+        const spinner = document.createElement('div');
+        spinner.className = 'absolute inset-0 flex items-center justify-center bg-black/40 z-10 transition-opacity duration-300';
+        spinner.innerHTML = `<div class="video-spinner"></div>`;
+        contentDiv.appendChild(spinner);
+
+        // Create GPU-Accelerated Video Player
+        const video = document.createElement('video');
+        video.src = slide.content;
+        video.className = 'w-full h-full object-contain gpu-layer';
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.controls = true;
+        video.preload = 'metadata';
+
+        // Hide Spinner when ready
+        const hideSpinner = () => {
+            spinner.style.opacity = '0';
+            setTimeout(() => spinner.remove(), 300);
+        };
+        video.addEventListener('canplay', hideSpinner, { once: true });
+        video.addEventListener('playing', hideSpinner, { once: true });
+
+        contentDiv.appendChild(video);
+
+        // Add Custom VFX Playback Speed Toolbar
+        const speedBar = document.createElement('div');
+        speedBar.className = 'vfx-controls-bar';
+        speedBar.innerHTML = `
+            <span class="text-[10px] font-mono text-gray-400 px-1.5 uppercase font-bold">Speed:</span>
+            <button class="vfx-speed-btn" data-speed="0.5">0.5x</button>
+            <button class="vfx-speed-btn active" data-speed="1.0">1.0x</button>
+            <button class="vfx-speed-btn" data-speed="1.5">1.5x</button>
+        `;
+
+        speedBar.querySelectorAll('.vfx-speed-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const speed = parseFloat(btn.getAttribute('data-speed'));
+                video.playbackRate = speed;
+                speedBar.querySelectorAll('.vfx-speed-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        contentDiv.appendChild(speedBar);
     }
 
     carouselVisual.appendChild(contentDiv);
@@ -373,7 +449,6 @@ function updateCarousel() {
         carouselNext.disabled = true;
     }
 
-    // Thumbnails Preview
     if (galleryPreview) {
         galleryPreview.innerHTML = currentProject.gallery.map((item, idx) => {
             const isActive = idx === currentSlideIndex;
@@ -431,6 +506,7 @@ function closeModal() {
         modal.classList.add('hidden');
         document.body.style.overflow = '';
         carouselVisual.innerHTML = '';
+        isCanvasPaused = false; // Unfreeze ambient background canvas when modal closes
     }, 300);
 }
 
@@ -469,7 +545,6 @@ if (carouselPrev) carouselPrev.addEventListener('click', (e) => {
     prevSlide();
 });
 
-// Fullscreen Viewer Logic
 function openFullscreen() {
     if (!currentProject || !currentProject.gallery) return;
     const slide = currentProject.gallery[currentSlideIndex];
@@ -483,7 +558,7 @@ function openFullscreen() {
     } else if (slide.type === 'video') {
         const video = document.createElement('video');
         video.src = slide.content;
-        video.className = 'max-w-full max-h-full';
+        video.className = 'max-w-full max-h-full gpu-layer';
         video.controls = true;
         video.autoplay = true;
         fullscreenContent.appendChild(video);
@@ -586,7 +661,7 @@ function observeElements() {
     });
 }
 
-// Typewriter Effect for Roles
+// Typewriter Effect
 const phrases = ["VFX Artist", "Technical Artist", "QA Tester"];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -636,7 +711,7 @@ function type() {
     setTimeout(type, typeSpeed);
 }
 
-// Ultra-Lightweight Ambient 2D Canvas Background (Replaces Heavy WebGL Raymarching Shader)
+// Ultra-Lightweight Ambient 2D Canvas Background (with automatic pause when modal/video is playing)
 function initAmbientParticles() {
     const container = document.getElementById('light-pillar-container');
     if (!container) return;
@@ -682,7 +757,8 @@ function initAmbientParticles() {
     heroObserver.observe(container);
 
     function animate() {
-        if (isVisible) {
+        // Skip rendering if offscreen or if video modal is active to maximize GPU budget
+        if (isVisible && !isCanvasPaused) {
             ctx.clearRect(0, 0, width, height);
 
             particles.forEach(p => {
